@@ -3,7 +3,7 @@ Resources:
     Type: AWS::Cognito::UserPool
     DeletionPolicy: Retain
     Properties:
-      UserPoolName: ${self:custom.stackName}-looser-pool
+      UserPoolName: ${self:custom.stackName}-loser-pool
       AutoVerifiedAttributes:
         - email
       AccountRecoverySetting:
@@ -20,17 +20,12 @@ Resources:
           RequireSymbols: false
           RequireUppercase: false
       MfaConfiguration: "OFF"
-      Schema:
-        - Name: name
-          AttributeDataType: String
-          Mutable: true
-          Required: true
 
   UserPoolAppClient:
     Type: AWS::Cognito::UserPoolClient
     DeletionPolicy: Retain
     Properties:
       UserPoolId: !Ref UserPool
-      ClientName: ${self:custom.stackName}-looser-pool-client
+      ClientName: ${self:custom.stackName}-loser-pool-client
       GenerateSecret: false
       PreventUserExistenceErrors: ENABLED
