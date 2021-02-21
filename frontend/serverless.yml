@@ -1,0 +1,65 @@
+service: speck-app-frontend
+
+plugins:
+  - serverless-deployment-bucket
+  - serverless-s3-deploy
+
+provider:
+  name: aws
+  region: eu-central-1
+  logRetentionInDays: 5
+  deploymentBucket:
+    name: speck-app-serverless-deployments-${opt:stage}
+
+custom:
+  stackName: ${self:service}-${opt:stage}
+  assets:
+    targets:
+      - bucket: ${self:service}-${opt:stage}
+        files:
+          - source: ./dist/
+            globs:
+              - '*'
+              - '**/*'
+
+resources:
+  Resources:
+    WebBucket:
+      Type: 'AWS::S3::Bucket'
+      Properties:
+        BucketName: ${self:custom.stackName}
+        AccessControl: PublicRead
+        WebsiteConfiguration:
+          IndexDocument: index.html
+          ErrorDocument: error.html
+        CorsConfiguration:
+          CorsRules:
+              - AllowedOrigins:
+                - '*'
+                AllowedHeaders:
+                  - '*'
+                AllowedMethods:
+                  - GET
+                  - PUT
+                  - POST
+                  - DELETE
+                  - HEAD
+                MaxAge: 3000
+
+    WebBucketPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        PolicyDocument:
+          Id: ${self:custom.stackName}-bucket-policy
+          Version: "2012-10-17"
+          Statement:
+            - Sid: PublicReadForGetBucketObjects
+              Effect: Allow
+              Principal: '*'
+              Action: 's3:GetObject'
+              Resource: !Join
+                - ''
+                - - 'arn:aws:s3:::'
+                  - !Ref WebBucket
+                  - /*
+        Bucket: !Ref WebBucket
