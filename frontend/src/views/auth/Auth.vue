@@ -1,6 +1,7 @@
 <template>
   <div>
-    <amplify-authenticator>
+    <amplify-authenticator :auth-config="authConfig">
+      }
       <div v-if="authState === 'signedin' && user">
         <div>Hello, {{ user.username }}</div>
       </div>
@@ -22,7 +23,30 @@ export default {
     return {
       user: undefined,
       authState: undefined,
-      unsubscribeAuth: undefined
+      unsubscribeAuth: undefined,
+      authConfig: {
+        signUpConfig: {
+          hiddenDefaults: [
+            'phone_number'
+          ],
+          signUpFields: [
+            {
+              label: 'First name',
+              key: 'name',
+              required: true,
+              placeholder: 'First name',
+              displayOrder: 0,
+            },
+            {
+              label: 'Last name',
+              key: 'family_name',
+              required: false,
+              placeholder: 'Last name',
+              displayOrder: 1,
+            },
+          ],
+        },
+      },
     }
   },
   watch: {

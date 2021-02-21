@@ -6,6 +6,8 @@ import router from './plugins/router';
 import './plugins/amplify';
 import {User} from "@/models/User";
 import Amplify from "aws-amplify"; // do not remove
+// @ts-ignore
+import {AmplifyEventBus} from 'aws-amplify-vue';
 
 Vue.config.productionTip = false
 
@@ -19,6 +21,10 @@ const rootApp = new Vue({
     }
   },
   async created() {
+    // @ts-ignore
+    AmplifyEventBus.$on('authState', (_authState, userInfo) => {
+      this.user = userInfo;
+    });
     this.setUser(await Amplify.Auth.currentAuthenticatedUser());
   },
   methods: {
