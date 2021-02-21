@@ -1,5 +1,10 @@
 module.exports = {
-  transpileDependencies: [
-    'vuetify'
-  ]
+    transpileDependencies: [
+        'vuetify'
+    ],
+    configureWebpack: {
+        resolve: {
+            extensions: ['.js', '.ts', '.vue'],
+        }
+    },
 }
