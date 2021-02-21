@@ -1,17 +1,23 @@
-import Home from '../views/Home.vue'
+import Home from '../views/Home.vue';
+import SpeckApp from '../views/SpeckApp.vue';
+import Auth from '../views/auth/Auth.vue';
+import {RouteConfig} from "vue-router/types/router";
 
-export const routes = [
+export const routes: RouteConfig[] = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/auth',
+    name: 'auth',
+    component: Auth,
+  },
+  {
+    path: '/app',
+    name: 'appRoot',
+    meta: { requiresAuth: true },
+    component: SpeckApp,
   }
 ]
