@@ -11,7 +11,7 @@
       </VListItemAvatar>
 
       <VListItemContent>
-        <VListItemTitle>Porki</VListItemTitle>
+        <VListItemTitle>{{ $root.user.username }}</VListItemTitle>
       </VListItemContent>
     </VListItem>
 
