@@ -1,7 +1,31 @@
 <template>
-  <div class="about">
-    <h2>Hello {{ $root.user.username }}.</h2>
-    <img src="https://i.pinimg.com/originals/95/77/95/957795a982bfaa762b546f04cf398f89.gif">
-    <h1>This is the Speck App!</h1>
+  <div id="speck-app">
+    <AppBar @show-nav="showNavigationDrawer = true"/>
+    <NavigationDrawer v-model="showNavigationDrawer"/>
+
+    <!-- Sizes content based upon application components -->
+    <VMain>
+      <!-- Provides the application the proper gutter -->
+      <VContainer fluid>
+        <RouterView/>
+      </VContainer>
+    </VMain>
   </div>
 </template>
+<script>
+import NavigationDrawer from "@/views/speck-app/NavigationDrawer";
+import AppBar from "@/views/speck-app/AppBar";
+
+export default {
+  components: {AppBar, NavigationDrawer},
+  data() {
+    return {
+      showNavigationDrawer: false,
+    }
+  },
+}
+</script>
+
+<style lang="scss">
+  @import "~@/scss/views/speckApp.scss";
+</style>
