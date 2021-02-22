@@ -19,16 +19,27 @@
 
     <VList dense>
       <VListItem
-          v-for="item in items"
-          :key="item.title"
           link
+          :to="{name: 'app-calendar'}"
       >
         <VListItemIcon>
-          <VIcon>{{ item.icon }}</VIcon>
+          <VIcon>mdi-calendar</VIcon>
         </VListItemIcon>
 
         <VListItemContent>
-          <VListItemTitle>{{ item.title }}</VListItemTitle>
+          <VListItemTitle>Calendar</VListItemTitle>
+        </VListItemContent>
+      </VListItem>
+      <VListItem
+          link
+          :to="{name: 'app-shopping-list'}"
+      >
+        <VListItemIcon>
+          <VIcon>mdi-cart-outline</VIcon>
+        </VListItemIcon>
+
+        <VListItemContent>
+          <VListItemTitle>Einkaufen</VListItemTitle>
         </VListItemContent>
       </VListItem>
     </VList>
@@ -47,10 +58,6 @@ export default {
   data() {
     return {
       show: this.value,
-      items: [
-        {title: 'Calendar', icon: 'mdi-calendar'},
-        {title: 'Einkaufen', icon: 'mdi-cart-outline'},
-      ],
     }
   },
   watch: {
