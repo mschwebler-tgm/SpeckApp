@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import {routes} from '@/routes';
-import Amplify from "aws-amplify";
+import {authGuard, updateUser} from "@auth/authGuard";
 
 Vue.use(VueRouter);
 
@@ -11,19 +11,7 @@ const router = new VueRouter({
     routes,
 });
 
-router.beforeEach(async (to, from, next) => {
-    if (!to.meta.requiresAuth) {
-        next();
-    }
-    console.log('[NavigationGuard] Checking auth state...');
-    try {
-        await Amplify.Auth.currentAuthenticatedUser();
-        console.log('[NavigationGuard] Success.');
-        next();
-    } catch (e) {
-        console.log('[NavigationGuard] Error. Redirecting to auth');
-        next({name: 'auth'});
-    }
-});
+router.beforeEach(authGuard);
+router.afterEach(updateUser);
 
 export default router;

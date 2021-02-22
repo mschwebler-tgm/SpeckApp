@@ -2,9 +2,6 @@
   <div>
     <amplify-authenticator :auth-config="authConfig">
       }
-      <div v-if="authState === 'signedin' && user">
-        <div>Hello, {{ user.username }}</div>
-      </div>
       <amplify-sign-out></amplify-sign-out>
     </amplify-authenticator>
   </div>
@@ -15,15 +12,14 @@ import {AmplifyEventBus, components} from 'aws-amplify-vue';
 import {rootApp} from "@/main";
 
 export default {
-  name: 'AuthStateApp',
+  name: 'Auth',
   components: {
     ...components,
   },
   data() {
     return {
-      user: undefined,
-      authState: undefined,
-      unsubscribeAuth: undefined,
+      authState: this.state,
+      unsubscribeAuth: null,
       authConfig: {
         signUpConfig: {
           hiddenDefaults: [
@@ -49,19 +45,12 @@ export default {
       },
     }
   },
-  watch: {
-    user(user) {
-      if (user) {
-        rootApp.setUser(user);
-      }
-    }
-  },
   created() {
-    console.log('created')
     this.unsubscribeAuth = async (authState, authData) => {
-      console.log(authState)
       this.authState = authState;
-      this.user = authData;
+      if (authState === 'signedIn') {
+        rootApp.setUser(authData);
+      }
     }
     AmplifyEventBus.$on('authState', this.unsubscribeAuth);
   },
