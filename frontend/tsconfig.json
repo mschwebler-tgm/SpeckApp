@@ -18,6 +18,9 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@calendar/*": [
+        "src/modules/calendar/*"
       ]
     },
     "lib": [
