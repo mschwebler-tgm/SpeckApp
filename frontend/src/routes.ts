@@ -11,7 +11,7 @@ export const routes: RouteConfig[] = [
   },
   {
     path: '/app',
-    name: 'appRoot',
+    name: 'speck-app-root',
     meta: { requiresAuth: true },
     component: SpeckApp,
   },
