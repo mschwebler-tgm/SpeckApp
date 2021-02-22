@@ -9,6 +9,7 @@ module.exports = {
             extensions: ['.js', '.ts', '.vue'],
             alias: {
                 '@': path.join(__dirname, 'src/'),
+                '@auth': path.join(__dirname, 'src/modules/auth/'),
                 '@calendar': path.join(__dirname, 'src/modules/calendar/'),
             }
         }

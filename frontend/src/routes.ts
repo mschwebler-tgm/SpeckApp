@@ -1,7 +1,7 @@
 import Home from './views/public-views/Home.vue';
 import SpeckApp from './views/speck-app/SpeckApp.vue';
-import Auth from './views/auth/Auth.vue';
 import {RouteConfig} from "vue-router/types/router";
+import {authRoutes} from '@auth/routes';
 
 export const routes: RouteConfig[] = [
   {
@@ -10,14 +10,10 @@ export const routes: RouteConfig[] = [
     component: Home
   },
   {
-    path: '/auth',
-    name: 'auth',
-    component: Auth,
-  },
-  {
     path: '/app',
     name: 'appRoot',
     meta: { requiresAuth: true },
     component: SpeckApp,
-  }
+  },
+  ...authRoutes,
 ]

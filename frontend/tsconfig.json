@@ -19,6 +19,9 @@
       "@/*": [
         "src/*"
       ],
+      "@auth/*": [
+        "src/modules/auth/*"
+      ],
       "@calendar/*": [
         "src/modules/calendar/*"
       ]

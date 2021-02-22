@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import calendar from '@calendar/store';
+import auth from '@auth/store';
 
 Vue.use(Vuex);
 
 const modules = {
     calendar,
+    auth,
 };
 
 const store = new Vuex.Store({
