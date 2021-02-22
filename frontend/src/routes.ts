@@ -1,6 +1,6 @@
-import Home from '../views/Home.vue';
-import SpeckApp from '../views/SpeckApp.vue';
-import Auth from '../views/auth/Auth.vue';
+import Home from './views/public-views/Home.vue';
+import SpeckApp from './views/speck-app/SpeckApp.vue';
+import Auth from './views/auth/Auth.vue';
 import {RouteConfig} from "vue-router/types/router";
 
 export const routes: RouteConfig[] = [

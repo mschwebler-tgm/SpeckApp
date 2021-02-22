@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import {routes} from '@/config/routes';
+import {routes} from '@/routes';
 import Amplify from "aws-amplify";
 
 Vue.use(VueRouter);
