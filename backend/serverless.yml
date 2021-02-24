@@ -5,6 +5,8 @@ plugins:
   - serverless-webpack
   - serverless-deployment-bucket
   - serverless-offline
+  - serverless-layers
+  - serverless-scriptable-plugin
 
 provider:
   name: aws
@@ -13,10 +15,20 @@ provider:
   logRetentionInDays: 5
   deploymentBucket:
     name: speck-app-serverless-deployments-${opt:stage}
+  layers:
+    libNodeModule:
+      path: lib
+      description: "additional node_module"
   package:
     exclude:
       - lib/**
       - node_modules/**
+    include:
+      - package.json
+
+package:
+  include:
+    - package.json
 #  iamRoleStatements:
 #    - Effect: "Allow"
 #      Action:
@@ -37,15 +49,13 @@ provider:
 
 custom:
   stackName: ${self:service}-${opt:stage}
+  scriptHooks:
+    before:deploy:deploy: zip -ur .serverless/speck-app-backend.zip package.json  # package.json is needed by tsoa
 
 functions:
   calendarApi:
-    handler: src/domain/calendar/apiHandler.handler
+    handler: src/apiHandler.handler
     events:
-      - http:
-          path: /
-          method: ANY
-          cors: true
       - http:
           path: /{proxy+}
           method: ANY

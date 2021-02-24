@@ -1,15 +1,12 @@
 {
-  "entryFile": "./src/domain/calendar/apiHandler.ts",
-  "controllerPathGlobs": [
-    "./src/**/*Controller.ts"
-  ],
   "swagger": {
     "name": "Speck App Calendar API",
     "description": "Express serverless API definitions",
     "version": "1.0.0",
     "schemes": [ "http" ],
-    "outputDirectory": "./src/domain/calendar/generated",
-    "entryFile": "./src/domain/calendar/apiHandler.ts",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "outputDirectory": "./src/domain/calendar/generated-routes/swagger",
+    "entryFile": "./src/apiHandler.ts",
     "host": "localhost:3000",
     "controllerPathGlobs": [
       "./src/**/*Controller.ts"
@@ -18,8 +15,12 @@
   },
   "routes": {
     "basePath": "/",
-    "entryFile": "./src/domain/calendar/apiHandler.ts",
+    "entryFile": "./src/apiHandler.ts",
     "routesDir": "./src/domain/calendar/generated-routes",
-    "middleware": "express"
+    "middleware": "express",
+    "noImplicitAdditionalProperties": "throw-on-extras",
+    "controllerPathGlobs": [
+      "./src/**/*Controller.ts"
+    ]
   }
 }

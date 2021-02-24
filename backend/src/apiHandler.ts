@@ -1,4 +1,4 @@
-import {RegisterRoutes} from "./generated-routes/routes";
+import {RegisterRoutes} from "./domain/calendar/generated-routes/routes";
 import * as bodyParser from 'body-parser';
 import {
     Response as ExResponse,
@@ -6,7 +6,6 @@ import {
     NextFunction,
 } from 'express';
 import {ValidateError} from 'tsoa';
-
 const express = require( "express");
 const sls = require('serverless-http');
 const app = express(express.json());
@@ -42,4 +41,4 @@ app.use(function errorHandler(
     next();
 });
 
-export const handler = sls(app);
+module.exports.handler = sls(app);
