@@ -4,6 +4,7 @@ frameworkVersion: '2'
 plugins:
   - serverless-webpack
   - serverless-deployment-bucket
+  - serverless-offline
 
 provider:
   name: aws
@@ -38,6 +39,17 @@ custom:
   stackName: ${self:service}-${opt:stage}
 
 functions:
+  calendarApi:
+    handler: src/domain/calendar/apiHandler.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+          cors: true
+      - http:
+          path: /{proxy+}
+          method: ANY
+          cors: true
   hello:
     handler: src/handler.hello
 #    The following are a few example events you can configure
