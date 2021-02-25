@@ -61,6 +61,10 @@ functions:
           path: /{proxy+}
           method: ANY
           cors: true
+          authorizer:
+            type: COGNITO_USER_POOLS
+            name: cognitoAuthorizer
+            arn: !GetAtt UserPool.Arn
   hello:
     handler: src/handler.hello
 #    The following are a few example events you can configure
