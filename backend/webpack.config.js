@@ -9,6 +9,8 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
         alias: {
             "@": path.resolve(__dirname, 'src'),
+            "@domain": path.resolve(__dirname, 'src/domain'),
+            "@calendar": path.resolve(__dirname, 'src/domain/calendar'),
         },
     },
     output: {
