@@ -43,5 +43,14 @@ module.exports = {
     },
     externals: [
         'aws-sdk',
+        'class-transformer',
+        'class-validator',
+        'tsoa',
+        'inversify',
+        'express',
+        'body-parser',
+        'swagger-ui-express',
+        'serverless-http',
+        'reflect-metadata',
     ],
 };
