@@ -13,6 +13,7 @@ provider:
   runtime: nodejs12.x
   region: eu-central-1
   logRetentionInDays: 5
+  versionFunctions: false
   deploymentBucket:
     name: speck-app-serverless-deployments-${opt:stage}
   layers:
