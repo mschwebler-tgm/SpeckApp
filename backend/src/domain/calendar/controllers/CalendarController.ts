@@ -5,7 +5,7 @@ import iocBindings from "../../../shared/ioc/iocBindings";
 import CalendarService from "../services/CalendarService";
 import {APIGatewayProxyEvent} from "aws-lambda";
 import iocContainer from "../../../shared/ioc/iocContainer";
-import {plainToClass} from "class-transformer";
+import {transformAndValidateSync} from "class-transformer-validator";
 
 @Tags('Calendar')
 @Route('calendar')
@@ -21,9 +21,9 @@ export class BookController extends Controller {
     @Post('')
     public async create(
         @Request() request: APIGatewayProxyEvent,
-        @Body() body: unknown,
+        @Body() body: object,
     ): Promise<Calendar> {
-        const createCalendarRequest = plainToClass(CreateCalendarRequest, body);
+        const createCalendarRequest = transformAndValidateSync(CreateCalendarRequest, body);
         const userId = request.requestContext.authorizer.claims.sub;
         console.log(`Creating calendar for user "${userId}": `, JSON.stringify(createCalendarRequest));
         const calendarService: CalendarService = iocContainer.get(iocBindings.CalendarService);
