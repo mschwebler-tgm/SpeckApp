@@ -1,5 +1,6 @@
 const path = require('path');
 const slsw = require('serverless-webpack');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
     mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
@@ -46,6 +47,8 @@ module.exports = {
         'class-transformer',
         'class-validator',
         'tsoa',
+        'typescript',
+        'typescript-formatter',
         'inversify',
         'express',
         'body-parser',
@@ -53,4 +56,16 @@ module.exports = {
         'serverless-http',
         'reflect-metadata',
     ],
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                parallel: true,
+                terserOptions: {
+                    keep_classnames: true,
+                    keep_fnames: true,
+                }
+            }),
+        ],
+    },
 };

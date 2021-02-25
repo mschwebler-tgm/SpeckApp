@@ -6,7 +6,7 @@ import {Calendar} from "../../domain-models/Calendar";
 export default class DynamoCalendarRepository implements ICalendarRepository {
 
     async save(calendar: Calendar): Promise<Calendar> {
-        console.log('saving to dynamo...');
+        console.log('saving to dynamo...', JSON.stringify(calendar));
         return calendar;
     }
 
