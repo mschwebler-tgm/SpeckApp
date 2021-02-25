@@ -24,7 +24,7 @@ export class BookController extends Controller {
         @Body() body: unknown,
     ): Promise<Calendar> {
         const createCalendarRequest = plainToClass(CreateCalendarRequest, body);
-        const userId = request.requestContext.authorizer.sub;
+        const userId = request.requestContext.authorizer.claims.sub;
         console.log(`Creating calendar for user "${userId}": `, JSON.stringify(createCalendarRequest));
         const calendarService: CalendarService = iocContainer.get(iocBindings.CalendarService);
         return await calendarService.createCalendar(createCalendarRequest.toDomainModel(), userId);
