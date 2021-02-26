@@ -102,8 +102,8 @@ functions:
 #      variable2: value2
 
 resources:
-  - ${file(./infrastructure/userPool.yml)}
-  - ${file(./infrastructure/calendarTable.yml)}
+  - ${file(./infrastructure/aws/userPool.yml)}
+  - ${file(./infrastructure/aws/calendarTable.yml)}
 #  Resources:
 #    NewResource:
 #      Type: AWS::S3::Bucket
