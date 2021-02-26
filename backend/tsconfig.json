@@ -10,15 +10,10 @@
     "outDir": "lib",
     "baseUrl": "./src",
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "@domain/*": [
-        "src/domain/*"
-      ],
-      "@calendar/*": [
-        "src/domain/calendar/*"
-      ]
+      "@/*": ["*"],
+      "@domain/*": ["domain/*"],
+      "@calendar/*": ["domain/calendar/*"],
+      "@shared/*": ["shared/*"]
     },
     "lib": [
       "es6"
