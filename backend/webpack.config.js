@@ -12,6 +12,7 @@ module.exports = {
             "@": path.resolve(__dirname, 'src'),
             "@domain": path.resolve(__dirname, 'src/domain'),
             "@calendar": path.resolve(__dirname, 'src/domain/calendar'),
+            "@shared": path.resolve(__dirname, 'src/shared'),
         },
     },
     output: {

@@ -21,7 +21,7 @@ export class BookController extends Controller {
     @Post('')
     public async create(
         @Request() request: APIGatewayProxyEvent,
-        @Body() body: object,
+        @Body() body: CreateCalendarRequest,
     ): Promise<Calendar> {
         const createCalendarRequest = transformAndValidateSync(CreateCalendarRequest, body);
         const userId = request.requestContext.authorizer.claims.sub;

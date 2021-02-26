@@ -26,32 +26,26 @@ provider:
       - node_modules/**
     include:
       - package.json
+  environment:
+    REGION: ${self:provider.region}
+    CALENDAR_DYNAMO_TABLE_NAME: ${self:custom.calendar.dynamoTableName}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:PutItem"
+        - "dynamodb:GetItem"
+      Resource: !GetAtt CalendarTable.Arn
 
 package:
   include:
     - package.json
-#  iamRoleStatements:
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:ListBucket"
-#      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
-#    - Effect: "Allow"
-#      Action:
-#        - "s3:PutObject"
-#      Resource:
-#        Fn::Join:
-#          - ""
-#          - - "arn:aws:s3:::"
-#            - "Ref" : "ServerlessDeploymentBucket"
-#            - "/*"
-
-#  environment:
-#    variable1: value1
 
 custom:
   stackName: ${self:service}-${opt:stage}
   scriptHooks:
     before:deploy:deploy: zip -ur .serverless/speck-app-backend.zip package.json  # package.json is needed by tsoa
+  calendar:
+    dynamoTableName: ${self:custom.stackName}-calendar-ddb
 
 functions:
   calendarApi:
@@ -109,6 +103,7 @@ functions:
 
 resources:
   - ${file(./infrastructure/userPool.yml)}
+  - ${file(./infrastructure/calendarTable.yml)}
 #  Resources:
 #    NewResource:
 #      Type: AWS::S3::Bucket

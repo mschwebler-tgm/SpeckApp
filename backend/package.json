@@ -6,7 +6,7 @@
     "generate-swagger": "./node_modules/tsoa/dist/cli.js swagger",
     "generate-routes": "./node_modules/tsoa/dist/cli.js routes",
     "prestart": "npm run generate-routes",
-    "start": "isLocal=true NODE_ENV=dev sls offline start --stage dev",
+    "start": "IS_LOCAL=true NODE_ENV=dev sls offline start --stage dev",
     "predeploy": "npm run generate-routes",
     "deploy": "sls deploy --aws-profile msc",
     "prepackage": "npm run generate-routes",
@@ -15,6 +15,7 @@
   "author": "Matthias Schwebler",
   "license": "ISC",
   "devDependencies": {
+    "@aws-sdk/types": "^3.6.1",
     "@types/aws-lambda": "^8.10.72",
     "@types/body-parser": "1.19.0",
     "@types/express": "4.17.11",

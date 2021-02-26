@@ -11,6 +11,7 @@ export class CreateCalendarRequest {
     type: CalendarType;
 
     toDomainModel(): Calendar {
+        console.log('AAAAAAAAAAAAAAAA');
         return plainToClass(Calendar, this);
     }
 }

@@ -1,4 +1,5 @@
 export const calendarBindings = {
     CalendarService: Symbol.for('CalendarService'),
-    CalendarRepository: Symbol.for('CalendarRepository'),
+    CalendarRepositoryFactory: Symbol.for('CalendarRepositoryFactory'),
+    UserRepositoryFactory: Symbol('UserRepositoryFactory')
 };
