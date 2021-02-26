@@ -2,9 +2,11 @@ import User from "@calendar/domain-models/User";
 
 export default interface IUserRepository {
 
-    find(cognitoId: string): Promise<User>;
+    findByCognitoId(cognitoId: string): Promise<User>;
 
-    findOrCreate(cognitoId: string): Promise<User>;
+    findOrCreateByCognitoId(cognitoId: string): Promise<User>;
+
+    createForCognitoId(cognitoId: string): Promise<User>;
 
     save(user: User): Promise<void>;
 

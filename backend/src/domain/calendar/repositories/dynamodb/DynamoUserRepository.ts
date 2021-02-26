@@ -15,26 +15,26 @@ export default class DynamoUserRepository implements IUserRepository {
         this.tableName = tableName;
     }
 
-    async find(id: string): Promise<User> {
+    async findByCognitoId(cognitoId: string): Promise<User> {
         const getItemOutput: DocumentClient.GetItemOutput = await this.dynamoClient.get({
             TableName: this.tableName,
-            Key: { id: 'user:' + id },
+            Key: { id: 'user:' + cognitoId },
         }).promise();
 
         return plainToClass(User, getItemOutput.Item);
     }
 
-    async findOrCreate(id: string): Promise<User> {
-        const item = await this.find(id)
+    async findOrCreateByCognitoId(id: string): Promise<User> {
+        const item = await this.findByCognitoId(id)
         if (!item) {
-            return await this.create(id);
+            return await this.createForCognitoId(id);
         }
 
         return plainToClass(User, item);
     }
 
-    private async create(id: string) {
-        const user = plainToClass(User, {id: 'user:' + id});
+    async createForCognitoId(cognitoId: string) {
+        const user = plainToClass(User, {id: 'user:' + cognitoId});
         await this.save(user);
 
         return user;

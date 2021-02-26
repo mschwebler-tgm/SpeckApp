@@ -28,7 +28,7 @@ export default class CalendarService {
     }
 
     private async addCalendarToUser(userId, calendarId) {
-        const user: User = await this.userRepository.findOrCreate(userId);
+        const user: User = await this.userRepository.findOrCreateByCognitoId(userId);
         user.calendarIds.push(calendarId);
         await this.userRepository.save(user);
     }
