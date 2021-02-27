@@ -7,6 +7,9 @@ exitfn() {
   trap SIGINT
 
   docker stop $dockerContainerName
+  kill -9 $(lsof -t -i:8080)  # frontend
+  kill -9 $(lsof -t -i:8001)  # dynamo web ui
+  kill -9 $(pidof node)  # clean up zombie processes if necessary
 
   exit
 }
