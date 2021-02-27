@@ -10,14 +10,18 @@
         <RouterView/>
       </VContainer>
     </VMain>
+
+    <BottomNavigation />
   </div>
 </template>
+
 <script>
 import NavigationDrawer from "@/views/speck-app/NavigationDrawer";
 import AppBar from "@/views/speck-app/AppBar";
+import BottomNavigation from "@/views/speck-app/BottomNavigation";
 
 export default {
-  components: {AppBar, NavigationDrawer},
+  components: {BottomNavigation, AppBar, NavigationDrawer},
   data() {
     return {
       showNavigationDrawer: false,
