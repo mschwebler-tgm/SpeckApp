@@ -1,8 +1,10 @@
 import RequestError from "@/services/request-service/RequestError";
+import Auth from "@aws-amplify/auth";
 
 type RequestHeaders = { [key: string]: string };
 type RequestOptions = { headers?: RequestHeaders, body?: any };
 
+// noinspection JSMethodCanBeStatic
 class RequestService {
     private readonly baseUrl: string | null;
     private readonly defaultHeaders: RequestHeaders;
@@ -42,12 +44,14 @@ class RequestService {
      * @return Promise<Response>
      */
     async fetch(method: string, url: string, requestOptions: RequestOptions = {}) {
+        const authToken = await this.getAuthToken();
         const finalUrl = this.getUrl(url);
         const fetchOptions: RequestInit = {
             body: requestOptions.body,
             headers: {
                 ...this.defaultHeaders,
                 ...requestOptions.headers,
+                'Authorization': authToken
             },
         }
         const response = await fetch(finalUrl, fetchOptions);
@@ -56,6 +60,12 @@ class RequestService {
             return response;
         }
         throw new RequestError(await this.getResponseBody(response));
+    }
+
+    private async getAuthToken() {
+        const session = await Auth.currentSession();
+        const token = session.getIdToken();
+        return `Bearer ${token.getJwtToken()}`;
     }
 
     async getResponseBody(response: Response) {
