@@ -26,6 +26,7 @@
         dark
         small
         color="indigo"
+        :to="{name: 'calendar-create'}"
     >
       <VIcon>{{ icons.EVENT }}</VIcon>
     </VBtn>

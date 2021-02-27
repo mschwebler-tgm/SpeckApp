@@ -6,7 +6,7 @@
     <!-- Sizes content based upon application components -->
     <VMain class="h-100">
       <!-- Provides the application the proper gutter -->
-      <VContainer fluid>
+      <VContainer fluid class="h-100">
         <RouterView/>
       </VContainer>
     </VMain>
