@@ -47,13 +47,15 @@ class RequestService {
         const authToken = await this.getAuthToken();
         const finalUrl = this.getUrl(url);
         const fetchOptions: RequestInit = {
-            body: requestOptions.body,
+            method: method,
+            body: JSON.stringify(requestOptions.body),
             headers: {
                 ...this.defaultHeaders,
                 ...requestOptions.headers,
                 'Authorization': authToken
             },
         }
+
         const response = await fetch(finalUrl, fetchOptions);
         const isSucceeded = (response.status >= 200 && response.status < 300);
         if (isSucceeded) {
