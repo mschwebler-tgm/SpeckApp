@@ -13,17 +13,50 @@
           <VIcon>mdi-close</VIcon>
         </VBtn>
       </VToolbar>
-      Bla
+
+      <VAlert v-if="errorMessage" type="error" tile>
+        {{ errorMessage }}
+      </VAlert>
+
+      <VContainer fluid>
+        <CalendarForm
+            v-model="calendar"
+            @submit="create"
+            :loading="isLoading"
+        />
+      </VContainer>
     </VSheet>
   </VBottomSheet>
 </template>
 
 <script>
+import CalendarForm from "@calendar/components/CalendarForm";
+import {calendarRepository} from "@calendar/services/CalendarRepository";
+
 export default {
-name: "Create"
+  name: "Create",
+  components: {CalendarForm},
+  data() {
+    return {
+      calendar: {
+        name: null,
+        type: null,
+      },
+      isLoading: false,
+      errorMessage: null,
+    }
+  },
+  methods: {
+    async create() {
+      this.isLoading = true;
+      try {
+        await calendarRepository.create(this.calendar);
+        return this.$router.push({name: 'app-calendar'});
+      } catch (error) {
+        this.errorMessage = error.response.message;
+      }
+      this.isLoading = false;
+    },
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

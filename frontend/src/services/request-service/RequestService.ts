@@ -15,28 +15,23 @@ class RequestService {
     }
 
     async get(url: string, options?: RequestOptions) {
-        const response = await this.fetch('GET', url, options);
-        return await this.getResponseBody(response);
+        return this.fetch('GET', url, options);
     }
 
     async delete(url: string, options?: RequestOptions) {
-        const response = await this.fetch('DELETE', url, options);
-        return await this.getResponseBody(response);
+        return this.fetch('DELETE', url, options);
     }
 
     async post(url: string, body: any) {
-        const response = await this.fetch('POST', url, {body});
-        return await this.getResponseBody(response);
+        return await this.fetch('POST', url, {body});
     }
 
     async put(url: string, body: any) {
-        const response = await this.fetch('PUT', url, {body});
-        return await this.getResponseBody(response);
+        return this.fetch('PUT', url, {body});
     }
 
     async patch(url: string, body: any) {
-        const response = await this.fetch('PATCH', url, {body});
-        return await this.getResponseBody(response);
+        return this.fetch('PATCH', url, {body});
     }
 
     /**
@@ -59,7 +54,7 @@ class RequestService {
         const response = await fetch(finalUrl, fetchOptions);
         const isSucceeded = (response.status >= 200 && response.status < 300);
         if (isSucceeded) {
-            return response;
+            return await this.getResponseBody(response);
         }
         throw new RequestError(await this.getResponseBody(response));
     }

@@ -4,7 +4,7 @@ import {plainToClass} from "class-transformer";
 
 export class CreateCalendarRequest {
 
-    @Length(5, 50)
+    @Length(3, 50)
     name: string;
 
     @IsEnum(CalendarType)

@@ -32,5 +32,6 @@ echo "[start-offline] starting frontend... http://localhost:8080"
 cd frontend && nohup npm run serve < /dev/null &
 
 # serverless-offline
-cd backend && AUTHORIZER_BODY=abc IS_LOCAL=true NODE_ENV=dev sls offline start --stage dev --noAuth
+set AUTHORIZER_BODY={"claims": {"sub": "offlineContext_authorizer_principalId"}}
+cd backend && IS_LOCAL=true NODE_ENV=dev sls offline start --stage dev --noAuth
 
