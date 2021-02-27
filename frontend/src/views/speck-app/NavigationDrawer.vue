@@ -23,7 +23,7 @@
           :to="{name: 'app-calendar'}"
       >
         <VListItemIcon>
-          <VIcon>mdi-calendar</VIcon>
+          <VIcon>{{ icons.CALENDAR }}</VIcon>
         </VListItemIcon>
 
         <VListItemContent>
@@ -47,8 +47,12 @@
 </template>
 
 <script>
-export default {
+import Vue from "vue";
+import {iconsMixin} from "@calendar/config/icons";
+
+export default Vue.extend({
   name: "NavigationDrawer",
+  mixins: [iconsMixin],
   props: {
     value: {
       type: Boolean,
@@ -68,7 +72,7 @@ export default {
       this.$emit('input', show);
     }
   }
-}
+});
 </script>
 
 <style scoped>

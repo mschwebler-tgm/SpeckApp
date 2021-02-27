@@ -9,15 +9,19 @@
     <VBtn :to="{name: 'app-calendar'}">
       <span>Calendar</span>
 
-      <VIcon>mdi-calendar</VIcon>
+      <VIcon>{{ icons.CALENDAR }}</VIcon>
     </VBtn>
   </VBottomNavigation>
 </template>
 
 <script>
-export default {
-name: "BottomNavigation"
-}
+import Vue from "vue";
+import {iconsMixin} from "@calendar/config/icons";
+
+export default Vue.extend({
+  name: "BottomNavigation",
+  mixins: [iconsMixin],
+})
 </script>
 
 <style scoped>

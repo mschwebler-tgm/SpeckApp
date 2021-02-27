@@ -4,7 +4,7 @@
     <NavigationDrawer v-model="showNavigationDrawer"/>
 
     <!-- Sizes content based upon application components -->
-    <VMain>
+    <VMain class="h-100">
       <!-- Provides the application the proper gutter -->
       <VContainer fluid>
         <RouterView/>
