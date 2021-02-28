@@ -1,6 +1,6 @@
 import {requestService} from "@/services/request-service/RequestService";
 
-export default class CalendarRepository {
+class CalendarRepository {
     async create(calendar: any) {  // TODO share request classes from backend with frontend
         return requestService.post('/calendar', calendar);
     }
@@ -8,6 +8,10 @@ export default class CalendarRepository {
     async getById() {
         const response = await requestService.get('/calendar/1');
         console.log(response);
+    }
+
+    async listCalendars() {
+        return requestService.get('/calendar');
     }
 }
 

@@ -18,6 +18,16 @@ export class BookController extends Controller {
         return {id};
     }
 
+    @Get('')
+    public async list(
+        @Request() request: APIGatewayProxyEvent,
+    ): Promise<Calendar[]> {
+        const userId = request.requestContext.authorizer.claims.sub;
+        const calendarService: CalendarService = iocContainer.get(iocBindings.CalendarService);
+
+        return await calendarService.getAllCalendars(userId);
+    }
+
     @Post('')
     public async create(
         @Request() request: APIGatewayProxyEvent,

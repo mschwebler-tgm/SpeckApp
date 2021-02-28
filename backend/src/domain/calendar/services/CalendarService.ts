@@ -27,9 +27,16 @@ export default class CalendarService {
         return calendar;
     }
 
-    private async addCalendarToUser(userId, calendarId) {
+    private async addCalendarToUser(userId, calendarId): Promise<void> {
         const user: User = await this.userRepository.findOrCreateByCognitoId(userId);
         user.calendarIds.push(calendarId);
         await this.userRepository.save(user);
+    }
+
+    async getAllCalendars(userId: string): Promise<Calendar[]> {
+        console.log('get user')
+        const user = await this.userRepository.findByCognitoId(userId);
+        console.log(user);
+        return this.calendarRepository.findMultiple(user.calendarIds);
     }
 }

@@ -3,6 +3,7 @@ import {injectable} from "inversify";
 import ICalendarRepository from "../ICalendarRepository";
 import {Calendar} from "@calendar/domain-models/Calendar";
 import uuid4 from "@shared/helpers/uuid4";
+import {plainToClass} from "class-transformer";
 
 @injectable()
 export default class DynamoCalendarRepository implements ICalendarRepository {
@@ -25,6 +26,18 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
         }).promise();
 
         return calendar;
+    }
+
+    async findMultiple(calendarIds: string[]): Promise<Calendar[]> {
+        const batchGetResult = await this.dynamoClient.batchGet({
+            RequestItems: {
+                [this.tableName]: {
+                    Keys: calendarIds.map(id => ({id})),
+                },
+            },
+        }).promise();
+
+        return plainToClass(Calendar, batchGetResult.Responses[this.tableName]);
     }
 
 }

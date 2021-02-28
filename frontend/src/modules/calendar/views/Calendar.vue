@@ -22,6 +22,9 @@ export default Vue.extend({
   name: "Calendar",
   mixins: [iconsMixin],
   components: {BaseEmptyState, CalendarActions},
+  created() {
+    this.$store.dispatch('calendar/fetchCalendars');
+  },
 });
 </script>
 
