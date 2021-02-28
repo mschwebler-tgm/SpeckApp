@@ -4,13 +4,13 @@
       ref="form"
       @submit.prevent="submit"
   >
-    <VTextField
+    <BaseTextField
         v-model="calendar.name"
         :rules="rules.name"
         label="Name"
         outlined
     />
-    <VSelect
+    <BaseSelect
         v-model="calendar.type"
         :items="calendarTypes"
         :rules="rules.type"
@@ -27,8 +27,11 @@
 </template>
 
 <script>
+import BaseTextField from "@/base-components/base-text-field/BaseTextField";
+import BaseSelect from "@/base-components/base-select/BaseSelect";
 export default {
   name: "CalendarForm",
+  components: {BaseSelect, BaseTextField},
   props: {
     value: {
       type: Object,
