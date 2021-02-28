@@ -30,6 +30,15 @@
     >
       <VIcon>{{ icons.EVENT }}</VIcon>
     </VBtn>
+    <VBtn
+        fab
+        dark
+        small
+        color="indigo"
+        :to="{name: 'calendar-create'}"
+    >
+      <VIcon>{{ icons.CALENDAR }}</VIcon>
+    </VBtn>
   </VSpeedDial>
 </template>
 

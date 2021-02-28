@@ -19,7 +19,7 @@ export default {
   },
   watch: {
     calendars(calendars) {
-      if (this.onlyOneCalendarAvailable) {
+      if (calendars.length > 0) {
         this.activeCalendar = calendars[0];
       }
     },

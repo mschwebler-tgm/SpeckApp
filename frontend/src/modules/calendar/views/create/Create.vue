@@ -51,6 +51,7 @@ export default {
       this.isLoading = true;
       try {
         await calendarRepository.create(this.calendar);
+        this.$store.dispatch("calendar/fetchCalendars");
         return this.$router.push({name: 'app-calendar'});
       } catch (error) {
         this.errorMessage = error.response.message;
