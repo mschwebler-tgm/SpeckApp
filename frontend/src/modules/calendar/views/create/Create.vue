@@ -1,41 +1,21 @@
 <template>
-  <VBottomSheet
-      fullscreen
-      :value="true"
-  >
-    <VSheet class="h-100">
-      <VToolbar dense>
-        <VToolbarTitle>Create Calendar</VToolbarTitle>
-
-        <VSpacer></VSpacer>
-
-        <VBtn icon @click="$router.back()">
-          <VIcon>mdi-close</VIcon>
-        </VBtn>
-      </VToolbar>
-
-      <VAlert v-if="errorMessage" type="error" tile>
-        {{ errorMessage }}
-      </VAlert>
-
-      <VContainer fluid>
-        <CalendarForm
-            v-model="calendar"
-            @submit="create"
-            :loading="isLoading"
-        />
-      </VContainer>
-    </VSheet>
-  </VBottomSheet>
+  <BaseFormOverlay :value="true">
+    <CalendarForm
+        v-model="calendar"
+        @submit="create"
+        :loading="isLoading"
+    />
+  </BaseFormOverlay>
 </template>
 
 <script>
 import CalendarForm from "@calendar/components/CalendarForm";
 import {calendarRepository} from "@calendar/services/CalendarRepository";
+import BaseFormOverlay from "@/base-components/base-form-overlay/BaseFormOverlay";
 
 export default {
   name: "Create",
-  components: {CalendarForm},
+  components: {BaseFormOverlay, CalendarForm},
   data() {
     return {
       calendar: {
