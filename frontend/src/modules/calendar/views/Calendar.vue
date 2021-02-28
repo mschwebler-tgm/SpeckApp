@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import CalendarActions from "@calendar/components/CalendarActions";
+import CalendarActions from "@calendar/components/calendar/CalendarActions";
 import BaseEmptyState from "@/base-components/base-empty-state/BaseEmptyState";
 import {iconsMixin} from "@calendar/config/icons";
 import Vue from "vue";
-import CalendarSelector from "@calendar/components/CalendarSelector";
+import CalendarSelector from "@calendar/components/calendar/CalendarSelector";
 
 export default Vue.extend({
   name: "Calendar",

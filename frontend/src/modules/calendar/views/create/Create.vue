@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import CalendarForm from "@calendar/components/CalendarForm";
+import CalendarForm from "@calendar/components/calendar/CalendarForm";
 import {calendarRepository} from "@calendar/services/CalendarRepository";
 import BaseFormOverlay from "@/base-components/base-form-overlay/BaseFormOverlay";
 

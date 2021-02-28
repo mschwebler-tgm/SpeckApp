@@ -8,7 +8,6 @@
         v-model="calendar.name"
         :rules="rules.name"
         label="Name"
-        outlined
     />
     <BaseSelect
         v-model="calendar.type"
@@ -17,7 +16,6 @@
         item-text="text"
         item-value="value"
         label="Type"
-        outlined
     />
     <VSpacer/>
     <VBtn type="submit" color="primary" :loading="loading">
