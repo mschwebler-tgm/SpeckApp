@@ -23,6 +23,7 @@ app.use(function errorHandler(
     res: ExResponse,
     next: NextFunction
 ): ExResponse | void {
+    console.error(err);
     if (err instanceof ValidateError) {
         console.warn(`Caught Validation Error for ${req.path}:`, err.fields);
         return res.status(422).json({

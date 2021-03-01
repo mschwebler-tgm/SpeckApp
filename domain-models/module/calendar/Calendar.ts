@@ -4,7 +4,8 @@ export enum CalendarType {
 }
 
 export class Calendar {
-    id: string;
+    id?: string;
     type: CalendarType;
-    ownerId: string;
+    name: string;
+    ownerId?: string;
 }

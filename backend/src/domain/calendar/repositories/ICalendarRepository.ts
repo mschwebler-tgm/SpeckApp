@@ -1,4 +1,4 @@
-import {Calendar} from "../domain-models/Calendar";
+import {Calendar} from "@domain-models/module/calendar/Calendar";
 
 export default interface ICalendarRepository {
 

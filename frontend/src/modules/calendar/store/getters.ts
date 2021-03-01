@@ -1,5 +1,10 @@
-export default {
-    calendars: (state: any) => state.calendars,
-    activeCalendar: (state: any) => state.activeCalendar,
-    calendarsLoading: (state: any) => state.loadingStates.calendars,
-}
+import {GetterTree} from "vuex";
+import {CalendarStoreState} from "@calendar/store/state";
+
+const getters: GetterTree<CalendarStoreState, CalendarStoreState> = {
+    calendars: state => state.calendars,
+    activeCalendar: state => state.activeCalendar,
+    calendarsLoading: state => state.loadingStates.calendars,
+};
+
+export default getters;

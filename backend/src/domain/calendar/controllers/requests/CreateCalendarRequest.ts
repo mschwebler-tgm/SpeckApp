@@ -1,6 +1,6 @@
-import {Calendar, CalendarType} from "../../domain-models/Calendar";
 import {IsEnum, Length} from "class-validator";
 import {plainToClass} from "class-transformer";
+import {Calendar, CalendarType} from "@domain-models/module/calendar/Calendar";
 
 export class CreateCalendarRequest {
 
@@ -11,7 +11,6 @@ export class CreateCalendarRequest {
     type: CalendarType;
 
     toDomainModel(): Calendar {
-        console.log('AAAAAAAAAAAAAAAA');
         return plainToClass(Calendar, this);
     }
 }

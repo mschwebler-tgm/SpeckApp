@@ -1,11 +1,16 @@
-export default {
-    setCalendars(state: any, calendars: any) {
+import {MutationTree} from "vuex";
+import {CalendarStoreState} from "@calendar/store/state";
+
+let mutations: MutationTree<CalendarStoreState> = {
+    setCalendars(state, calendars) {
         state.calendars = calendars;
     },
-    setActiveCalendar(state: any, calendar: any) {
+    setActiveCalendar(state, calendar) {
         state.activeCalendar = calendar;
     },
-    setLoadingStates(state: any, loadingStates: { [key: string]: boolean }) {
+    setLoadingStates(state, loadingStates: { [key: string]: boolean }) {
         Object.assign(state.loadingStates, loadingStates);
     },
-}
+};
+
+export default mutations;

@@ -24,7 +24,10 @@
       ],
       "@calendar/*": [
         "src/modules/calendar/*"
-      ]
+      ],
+      "@domain-models/*": [
+        "../domain-models/*"
+      ],
     },
     "lib": [
       "esnext",

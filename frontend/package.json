@@ -10,6 +10,7 @@
   "dependencies": {
     "aws-amplify": "^3.3.20",
     "aws-amplify-vue": "2.1.5",
+    "class-transformer": "^0.4.0",
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

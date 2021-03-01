@@ -13,7 +13,8 @@
       "@/*": ["*"],
       "@domain/*": ["domain/*"],
       "@calendar/*": ["domain/calendar/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@domain-models/*": ["../../domain-models/*"]
     },
     "lib": [
       "es6"

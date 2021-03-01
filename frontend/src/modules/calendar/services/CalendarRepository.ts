@@ -1,17 +1,16 @@
 import {requestService} from "@/services/request-service/RequestService";
+import {plainToClass} from "class-transformer";
+import {Calendar} from "@domain-models/module/calendar/Calendar";
 
 class CalendarRepository {
-    async create(calendar: any) {  // TODO share request classes from backend with frontend
-        return requestService.post('/calendar', calendar);
+    async create(calendar: Calendar): Promise<Calendar> {
+        const createdCalendar = requestService.post('/calendar', calendar);
+        return plainToClass(Calendar, createdCalendar);
     }
 
-    async getById() {
-        const response = await requestService.get('/calendar/1');
-        console.log(response);
-    }
-
-    async listCalendars() {
-        return requestService.get('/calendar');
+    async listCalendars(): Promise<Calendar[]> {
+        const calendars: unknown[] = await requestService.get('/calendar');
+        return plainToClass(Calendar, calendars);
     }
 }
 

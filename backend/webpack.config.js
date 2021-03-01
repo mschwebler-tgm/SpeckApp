@@ -13,6 +13,7 @@ module.exports = {
             "@domain": path.resolve(__dirname, 'src/domain'),
             "@calendar": path.resolve(__dirname, 'src/domain/calendar'),
             "@shared": path.resolve(__dirname, 'src/shared'),
+            "@domain-models": path.resolve(__dirname, '../domain-models'),
         },
     },
     output: {

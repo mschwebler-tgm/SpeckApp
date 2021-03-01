@@ -1,11 +1,11 @@
 import {Body, Controller, Get, Path, Post, Request, Route, Tags} from "tsoa";
 import {CreateCalendarRequest} from "./requests/CreateCalendarRequest";
-import {Calendar} from "../domain-models/Calendar";
 import iocBindings from "../../../shared/ioc/iocBindings";
 import CalendarService from "../services/CalendarService";
 import {APIGatewayProxyEvent} from "aws-lambda";
 import iocContainer from "../../../shared/ioc/iocContainer";
 import {transformAndValidateSync} from "class-transformer-validator";
+import {Calendar} from "@domain-models/module/calendar/Calendar";
 
 @Tags('Calendar')
 @Route('calendar')

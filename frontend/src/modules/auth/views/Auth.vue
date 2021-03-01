@@ -1,7 +1,6 @@
 <template>
   <div>
     <amplify-authenticator :auth-config="authConfig">
-      }
       <amplify-sign-out></amplify-sign-out>
     </amplify-authenticator>
   </div>
