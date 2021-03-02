@@ -1,4 +1,4 @@
-import {Calendar} from "@domain-models/module/calendar/Calendar";
+import { Calendar } from '@domain-models/module/calendar/Calendar';
 
 export default interface ICalendarRepository {
 
@@ -6,4 +6,4 @@ export default interface ICalendarRepository {
 
     findMultiple(calendarIds: string[]): Promise<Calendar[]>;
 
-}
+};

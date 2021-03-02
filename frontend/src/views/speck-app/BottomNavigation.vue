@@ -1,27 +1,27 @@
 <template>
-  <VBottomNavigation app>
-    <VBtn :to="{name: 'app-shopping-list'}">
-      <span>Shopping List</span>
+    <VBottomNavigation app>
+        <VBtn :to="{name: 'app-shopping-list'}">
+            <span>Shopping List</span>
 
-      <VIcon>mdi-cart-outline</VIcon>
-    </VBtn>
+            <VIcon>mdi-cart-outline</VIcon>
+        </VBtn>
 
-    <VBtn :to="{name: 'app-calendar'}">
-      <span>Calendar</span>
+        <VBtn :to="{name: 'app-calendar'}">
+            <span>Calendar</span>
 
-      <VIcon>{{ icons.CALENDAR }}</VIcon>
-    </VBtn>
-  </VBottomNavigation>
+            <VIcon>{{ icons.CALENDAR }}</VIcon>
+        </VBtn>
+    </VBottomNavigation>
 </template>
 
 <script>
-import Vue from "vue";
-import {iconsMixin} from "@calendar/config/icons";
+import Vue from 'vue';
+import { iconsMixin } from '@calendar/config/icons';
 
 export default Vue.extend({
-  name: "BottomNavigation",
-  mixins: [iconsMixin],
-})
+    name: 'BottomNavigation',
+    mixins: [iconsMixin],
+});
 </script>
 
 <style scoped>

@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
     transpileDependencies: [
-        'vuetify'
+        'vuetify',
     ],
     configureWebpack: {
         resolve: {
@@ -12,7 +12,7 @@ module.exports = {
                 '@auth': path.join(__dirname, 'src/modules/auth/'),
                 '@calendar': path.join(__dirname, 'src/modules/calendar/'),
                 '@domain-models': path.join(__dirname, '../domain-models/'),
-            }
-        }
+            },
+        },
     },
-}
+};

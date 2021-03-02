@@ -1,7 +1,7 @@
-import {MutationTree} from "vuex";
-import {CalendarStoreState} from "@calendar/store/state";
+import { MutationTree } from 'vuex';
+import { CalendarStoreState } from '@calendar/store/state';
 
-let mutations: MutationTree<CalendarStoreState> = {
+const mutations: MutationTree<CalendarStoreState> = {
     setCalendars(state, calendars) {
         state.calendars = calendars;
     },

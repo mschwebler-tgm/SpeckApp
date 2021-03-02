@@ -11,13 +11,13 @@ const modules = {
 };
 
 const store = new Vuex.Store({
-    modules
+    modules,
 });
 
 for (const moduleName of Object.keys(modules)) {
     // @ts-ignore
     if (modules[moduleName].actions.initialize) {
-        store.dispatch(moduleName + '/initialize');
+        store.dispatch(`${moduleName}/initialize`);
     }
 }
 

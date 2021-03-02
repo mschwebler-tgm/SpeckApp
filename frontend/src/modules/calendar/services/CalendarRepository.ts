@@ -1,6 +1,6 @@
-import {requestService} from "@/services/request-service/RequestService";
-import {plainToClass} from "class-transformer";
-import {Calendar} from "@domain-models/module/calendar/Calendar";
+import { requestService } from '@/services/request-service/RequestService';
+import { plainToClass } from 'class-transformer';
+import { Calendar } from '@domain-models/module/calendar/Calendar';
 
 class CalendarRepository {
     async create(calendar: Calendar): Promise<Calendar> {

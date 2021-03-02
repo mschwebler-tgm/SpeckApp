@@ -39,6 +39,8 @@ module.exports = {
     rules: {
         'no-console': 'off',
         'no-debugger': 'off',
+        'class-methods-use-this': 'off',
+        'import/no-unresolved': 'off',
         indent: [
             'error',
             4,

@@ -1,68 +1,68 @@
 <template>
-  <VBottomSheet
-      fullscreen
-      :value="showOverlay"
-  >
-    <VSheet class="h-100">
-      <VToolbar dense>
-        <VToolbarTitle>
-          {{ title }}
-        </VToolbarTitle>
+    <VBottomSheet
+        fullscreen
+        :value="showOverlay"
+    >
+        <VSheet class="h-100">
+            <VToolbar dense>
+                <VToolbarTitle>
+                    {{ title }}
+                </VToolbarTitle>
 
-        <VSpacer></VSpacer>
+                <VSpacer></VSpacer>
 
-        <VBtn icon @click="$router.back()">
-          <VIcon>mdi-close</VIcon>
-        </VBtn>
-      </VToolbar>
+                <VBtn icon @click="$router.back()">
+                    <VIcon>mdi-close</VIcon>
+                </VBtn>
+            </VToolbar>
 
-      <VAlert v-if="errorMessage" type="error" tile>
-        {{ errorMessage }}
-      </VAlert>
+            <VAlert v-if="errorMessage" type="error" tile>
+                {{ errorMessage }}
+            </VAlert>
 
-      <VContainer fluid>
-        <slot/>
-      </VContainer>
-    </VSheet>
-  </VBottomSheet>
+            <VContainer fluid>
+                <slot/>
+            </VContainer>
+        </VSheet>
+    </VBottomSheet>
 </template>
 
 <script>
 export default {
-  name: "BaseFormOverlay",
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
+    name: 'BaseFormOverlay',
+    props: {
+        value: {
+            type: Boolean,
+            default: false,
+        },
+        errorMessage: {
+            type: String,
+            default: null,
+        },
+        closeTargetRoute: {
+            type: [String, Object],
+            default: 'app-calendar',
+        },
     },
-    errorMessage: {
-      type: String,
-      default: null,
+    data() {
+        return {
+            showOverlay: this.value,
+        };
     },
-    closeTargetRoute: {
-      type: [String, Object],
-      default: 'app-calendar',
-    }
-  },
-  data() {
-    return {
-      showOverlay: this.value,
-    }
-  },
-  watch: {
-    value(showOverlay) {
-      this.showOverlay = showOverlay;
+    watch: {
+        value(showOverlay) {
+            this.showOverlay = showOverlay;
+        },
+        showOverlay(showOverlay) {
+            this.$emit('input', showOverlay);
+        },
     },
-    showOverlay(showOverlay) {
-      this.$emit('input', showOverlay);
+    computed: {
+        title() {
+            return this.$router.currentRoute.meta.overlayTitle;
+        },
     },
-  },
-  computed: {
-    title() {
-      return this.$router.currentRoute.meta.overlayTitle;
-    },
-  },
-}
+};
 </script>
 
 <style scoped>

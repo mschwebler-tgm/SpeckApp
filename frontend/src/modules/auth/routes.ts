@@ -1,5 +1,5 @@
-import {RouteConfig} from "vue-router/types/router";
-import Auth from "@/modules/auth/views/Auth.vue";
+import { RouteConfig } from 'vue-router/types/router';
+import Auth from '@/modules/auth/views/Auth.vue';
 
 export const authRoutes: RouteConfig[] = [
     {

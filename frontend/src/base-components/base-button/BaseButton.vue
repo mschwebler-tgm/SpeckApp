@@ -1,11 +1,11 @@
 <template>
-  <VBtn v-bind="$attrs" v-on="$listeners">
-    <slot/>
-  </VBtn>
+    <VBtn v-bind="$attrs" v-on="$listeners">
+        <slot/>
+    </VBtn>
 </template>
 
 <script>
 export default {
-  name: "BaseButton"
-}
+    name: 'BaseButton',
+};
 </script>

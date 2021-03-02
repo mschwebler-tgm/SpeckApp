@@ -1,5 +1,5 @@
-import RequestError from "@/services/request-service/RequestError";
-import Auth from "@aws-amplify/auth";
+import RequestError from '@/services/request-service/RequestError';
+import Auth from '@aws-amplify/auth';
 
 type RequestHeaders = { [key: string]: string };
 type RequestOptions = { headers?: RequestHeaders, body?: any };
@@ -7,6 +7,7 @@ type RequestOptions = { headers?: RequestHeaders, body?: any };
 // noinspection JSMethodCanBeStatic
 class RequestService {
     private readonly baseUrl: string | null;
+
     private readonly defaultHeaders: RequestHeaders;
 
     constructor(baseUrl: string, defaultHeaders: RequestHeaders) {
@@ -23,15 +24,15 @@ class RequestService {
     }
 
     async post(url: string, body: any) {
-        return await this.fetch('POST', url, {body});
+        return await this.fetch('POST', url, { body });
     }
 
     async put(url: string, body: any) {
-        return this.fetch('PUT', url, {body});
+        return this.fetch('PUT', url, { body });
     }
 
     async patch(url: string, body: any) {
-        return this.fetch('PATCH', url, {body});
+        return this.fetch('PATCH', url, { body });
     }
 
     /**
@@ -42,14 +43,14 @@ class RequestService {
         const authToken = await this.getAuthToken();
         const finalUrl = this.getUrl(url);
         const fetchOptions: RequestInit = {
-            method: method,
+            method,
             body: JSON.stringify(requestOptions.body),
             headers: {
                 ...this.defaultHeaders,
                 ...requestOptions.headers,
-                'Authorization': authToken
+                Authorization: authToken,
             },
-        }
+        };
 
         const response = await fetch(finalUrl, fetchOptions);
         const isSucceeded = (response.status >= 200 && response.status < 300);
@@ -66,7 +67,7 @@ class RequestService {
     }
 
     async getResponseBody(response: Response) {
-        let clonedResponse = await response.clone();
+        const clonedResponse = await response.clone();
         try {
             return await response.json();
         } catch (e) {
@@ -82,7 +83,7 @@ class RequestService {
     }
 
     isAbsoluteUrl(url: string) {
-        return ['//', 'http://', 'https://'].some(protocol => url.startsWith(protocol));
+        return ['//', 'http://', 'https://'].some((protocol) => url.startsWith(protocol));
     }
 }
 

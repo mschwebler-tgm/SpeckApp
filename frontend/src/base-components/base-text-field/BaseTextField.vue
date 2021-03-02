@@ -1,13 +1,13 @@
 <template>
-  <VTextField
-      v-bind="$attrs"
-      v-on="$listeners"
-      outlined
-  />
+    <VTextField
+        v-bind="$attrs"
+        v-on="$listeners"
+        outlined
+    />
 </template>
 
 <script>
 export default {
-  name: "BaseTextField"
-}
+    name: 'BaseTextField',
+};
 </script>

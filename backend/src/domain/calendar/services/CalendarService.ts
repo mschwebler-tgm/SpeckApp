@@ -1,14 +1,14 @@
-import {inject, injectable} from "inversify";
-import ICalendarRepository from "../repositories/ICalendarRepository";
-import iocBindings from "../../../shared/ioc/iocBindings";
-import IUserRepository from "@calendar/repositories/IUserRepository";
-import User from "@calendar/domain-models/User";
-import {Calendar} from "@domain-models/module/calendar/Calendar";
+import { inject, injectable } from 'inversify';
+import IUserRepository from '@calendar/repositories/IUserRepository';
+import User from '@calendar/domain-models/User';
+import { Calendar } from '@domain-models/module/calendar/Calendar';
+import iocBindings from '../../../shared/ioc/iocBindings';
+import ICalendarRepository from '../repositories/ICalendarRepository';
 
 @injectable()
 export default class CalendarService {
-
     private readonly calendarRepository: ICalendarRepository;
+
     private readonly userRepository: IUserRepository;
 
     constructor(
@@ -34,7 +34,7 @@ export default class CalendarService {
     }
 
     async getAllCalendars(userId: string): Promise<Calendar[]> {
-        console.log('get user')
+        console.log('get user');
         const user = await this.userRepository.findOrCreateByCognitoId(userId);
         console.log(user);
         return this.calendarRepository.findMultiple(user.calendarIds);

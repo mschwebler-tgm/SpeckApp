@@ -1,4 +1,4 @@
-import User from "@calendar/domain-models/User";
+import User from '@calendar/domain-models/User';
 
 export default interface IUserRepository {
 

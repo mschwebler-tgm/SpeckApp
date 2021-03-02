@@ -1,4 +1,4 @@
-import {Calendar} from "@domain-models/module/calendar/Calendar";
+import { Calendar } from '@domain-models/module/calendar/Calendar';
 
 export type CalendarStoreState = {
     calendars: Calendar[],
@@ -12,6 +12,6 @@ const state: CalendarStoreState = {
     loadingStates: {
         calendars: false,
     },
-}
+};
 
 export default state;

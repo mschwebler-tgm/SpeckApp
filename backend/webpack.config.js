@@ -9,11 +9,11 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
         alias: {
-            "@": path.resolve(__dirname, 'src'),
-            "@domain": path.resolve(__dirname, 'src/domain'),
-            "@calendar": path.resolve(__dirname, 'src/domain/calendar'),
-            "@shared": path.resolve(__dirname, 'src/shared'),
-            "@domain-models": path.resolve(__dirname, '../domain-models'),
+            '@': path.resolve(__dirname, 'src'),
+            '@domain': path.resolve(__dirname, 'src/domain'),
+            '@calendar': path.resolve(__dirname, 'src/domain/calendar'),
+            '@shared': path.resolve(__dirname, 'src/shared'),
+            '@domain-models': path.resolve(__dirname, '../domain-models'),
         },
     },
     output: {
@@ -31,17 +31,17 @@ module.exports = {
             },
             {
                 test: /\.d\.ts$/,
-                loader: 'ignore-loader'
+                loader: 'ignore-loader',
             },
             {
                 test: /\.js$/,
-                use: ["remove-hashbag-loader"],
+                use: ['remove-hashbag-loader'],
             },
         ],
     },
     resolveLoader: {
         alias: {
-            "remove-hashbag-loader": path.join(__dirname, "./loaders/remove-hashbag-loader"),
+            'remove-hashbag-loader': path.join(__dirname, './loaders/remove-hashbag-loader'),
         },
     },
     externals: [
@@ -66,7 +66,7 @@ module.exports = {
                 terserOptions: {
                     keep_classnames: true,
                     keep_fnames: true,
-                }
+                },
             }),
         ],
     },

@@ -1,9 +1,9 @@
 <template>
-  <div id="app">
-    <VApp>
-      <RouterView />
-    </VApp>
-  </div>
+    <div id="app">
+        <VApp>
+            <RouterView/>
+        </VApp>
+    </div>
 </template>
 
 <style lang="scss">

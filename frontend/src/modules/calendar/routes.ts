@@ -1,7 +1,7 @@
-import {RouteConfig} from "vue-router/types/router";
-import Calendar from "@calendar/views/Calendar.vue";
-import CreateCalendar from "@calendar/views/create/Create.vue";
-import CreateEvent from "@calendar/views/event/create/Create.vue";
+import { RouteConfig } from 'vue-router/types/router';
+import Calendar from '@calendar/views/Calendar.vue';
+import CreateCalendar from '@calendar/views/create/Create.vue';
+import CreateEvent from '@calendar/views/event/create/Create.vue';
 
 export const calendarRoutes: RouteConfig[] = [
     {

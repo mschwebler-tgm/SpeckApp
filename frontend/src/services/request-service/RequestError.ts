@@ -5,5 +5,4 @@ export default class RequestError extends Error {
         super('Error on request.');
         this.response = response;
     }
-
 }

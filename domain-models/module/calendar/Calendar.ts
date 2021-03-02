@@ -5,7 +5,10 @@ export enum CalendarType {
 
 export class Calendar {
     id?: string;
+
     type: CalendarType;
+
     name: string;
+
     ownerId?: string;
 }

@@ -1,77 +1,77 @@
 <template>
-  <VNavigationDrawer
-      v-model="show"
-      absolute
-      temporary
-      app
-  >
-    <VListItem>
-      <VListItemAvatar>
-        <VImg src="https://randomuser.me/api/portraits/men/78.jpg"></VImg>
-      </VListItemAvatar>
+    <VNavigationDrawer
+        v-model="show"
+        absolute
+        temporary
+        app
+    >
+        <VListItem>
+            <VListItemAvatar>
+                <VImg src="https://randomuser.me/api/portraits/men/78.jpg"></VImg>
+            </VListItemAvatar>
 
-      <VListItemContent>
-        <VListItemTitle>{{ $root.user.username }}</VListItemTitle>
-      </VListItemContent>
-    </VListItem>
+            <VListItemContent>
+                <VListItemTitle>{{ $root.user.username }}</VListItemTitle>
+            </VListItemContent>
+        </VListItem>
 
-    <VDivider></VDivider>
+        <VDivider></VDivider>
 
-    <VList dense>
-      <VListItem
-          link
-          :to="{name: 'app-calendar'}"
-      >
-        <VListItemIcon>
-          <VIcon>{{ icons.CALENDAR }}</VIcon>
-        </VListItemIcon>
+        <VList dense>
+            <VListItem
+                link
+                :to="{name: 'app-calendar'}"
+            >
+                <VListItemIcon>
+                    <VIcon>{{ icons.CALENDAR }}</VIcon>
+                </VListItemIcon>
 
-        <VListItemContent>
-          <VListItemTitle>Calendar</VListItemTitle>
-        </VListItemContent>
-      </VListItem>
-      <VListItem
-          link
-          :to="{name: 'app-shopping-list'}"
-      >
-        <VListItemIcon>
-          <VIcon>mdi-cart-outline</VIcon>
-        </VListItemIcon>
+                <VListItemContent>
+                    <VListItemTitle>Calendar</VListItemTitle>
+                </VListItemContent>
+            </VListItem>
+            <VListItem
+                link
+                :to="{name: 'app-shopping-list'}"
+            >
+                <VListItemIcon>
+                    <VIcon>mdi-cart-outline</VIcon>
+                </VListItemIcon>
 
-        <VListItemContent>
-          <VListItemTitle>Einkaufen</VListItemTitle>
-        </VListItemContent>
-      </VListItem>
-    </VList>
-  </VNavigationDrawer>
+                <VListItemContent>
+                    <VListItemTitle>Einkaufen</VListItemTitle>
+                </VListItemContent>
+            </VListItem>
+        </VList>
+    </VNavigationDrawer>
 </template>
 
 <script>
-import Vue from "vue";
-import {iconsMixin} from "@calendar/config/icons";
+import Vue from 'vue';
+import { iconsMixin } from '@calendar/config/icons';
 
 export default Vue.extend({
-  name: "NavigationDrawer",
-  mixins: [iconsMixin],
-  props: {
-    value: {
-      type: Boolean,
-      default: false,
+    name: 'NavigationDrawer',
+    mixins: [iconsMixin],
+    props: {
+        value: {
+            type: Boolean,
+            default: false,
+        },
     },
-  },
-  data() {
-    return {
-      show: this.value,
-    }
-  },
-  watch: {
-    value(show) {
-      this.show = show;
+    data() {
+        return {
+            show: this.value,
+        };
     },
-    show(show) {
-      this.$emit('input', show);
-    }
-  }
+    watch: {
+        value(show) {
+            this.show = show;
+        },
+        show(show) {
+            this.$emit('input', show);
+        },
+    },
 });
 </script>
 
