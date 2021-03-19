@@ -3,36 +3,12 @@
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 import { Controller, ValidationService, FieldErrors, ValidateError, TsoaRoute } from 'tsoa';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { BookController } from './../controllers/CalendarController';
+import { CalendarController } from './../controllers/CalendarController';
 import * as express from 'express';
 
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
 const models: TsoaRoute.Models = {
-    "CalendarType": {
-        "dataType": "refEnum",
-        "enums": ["private", "shared"],
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "Calendar": {
-        "dataType": "refObject",
-        "properties": {
-            "id": { "dataType": "string", "required": true },
-            "type": { "ref": "CalendarType", "required": true },
-            "ownerId": { "dataType": "string", "required": true },
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "CreateCalendarRequest": {
-        "dataType": "refObject",
-        "properties": {
-            "name": { "dataType": "string", "required": true },
-            "type": { "ref": "CalendarType", "required": true },
-        },
-        "additionalProperties": false,
-    },
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const validationService = new ValidationService(models);
 
@@ -43,28 +19,6 @@ export function RegisterRoutes(app: express.Express) {
     //  NOTE: If you do not see routes for all of your controllers in this file, then you might not have informed tsoa of where to look
     //      Please look into the "controllerPathGlobs" config option described in the readme: https://github.com/lukeautry/tsoa
     // ###########################################################################################################
-    app.get('/calendar/:id',
-        function(request: any, response: any, next: any) {
-            const args = {
-                id: { "in": "path", "name": "id", "required": true, "dataType": "string" },
-            };
-
-            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-
-            let validatedArgs: any[] = [];
-            try {
-                validatedArgs = getValidatedArgs(args, request);
-            } catch (err) {
-                return next(err);
-            }
-
-            const controller = new BookController();
-
-
-            const promise = controller.getBook.apply(controller, validatedArgs as any);
-            promiseHandler(controller, promise, response, next);
-        });
-    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     app.get('/calendar',
         function(request: any, response: any, next: any) {
             const args = {
@@ -80,7 +34,7 @@ export function RegisterRoutes(app: express.Express) {
                 return next(err);
             }
 
-            const controller = new BookController();
+            const controller = new CalendarController();
 
 
             const promise = controller.list.apply(controller, validatedArgs as any);
@@ -91,7 +45,7 @@ export function RegisterRoutes(app: express.Express) {
         function(request: any, response: any, next: any) {
             const args = {
                 request: { "in": "request", "name": "request", "required": true, "dataType": "object" },
-                body: { "in": "body", "name": "body", "required": true, "ref": "CreateCalendarRequest" },
+                body: { "in": "body", "name": "body", "required": true, "dataType": "object" },
             };
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
@@ -103,7 +57,7 @@ export function RegisterRoutes(app: express.Express) {
                 return next(err);
             }
 
-            const controller = new BookController();
+            const controller = new CalendarController();
 
 
             const promise = controller.create.apply(controller, validatedArgs as any);

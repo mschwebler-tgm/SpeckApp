@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,semi */
 import User from '@calendar/domain-models/User';
 
 export default interface IUserRepository {

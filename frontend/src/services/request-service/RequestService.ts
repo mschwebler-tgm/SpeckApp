@@ -24,7 +24,7 @@ class RequestService {
     }
 
     async post(url: string, body: any) {
-        return await this.fetch('POST', url, { body });
+        return this.fetch('POST', url, { body });
     }
 
     async put(url: string, body: any) {
@@ -42,6 +42,7 @@ class RequestService {
     async fetch(method: string, url: string, requestOptions: RequestOptions = {}) {
         const authToken = await this.getAuthToken();
         const finalUrl = this.getUrl(url);
+        // eslint-disable-next-line no-undef
         const fetchOptions: RequestInit = {
             method,
             body: JSON.stringify(requestOptions.body),
@@ -55,7 +56,7 @@ class RequestService {
         const response = await fetch(finalUrl, fetchOptions);
         const isSucceeded = (response.status >= 200 && response.status < 300);
         if (isSucceeded) {
-            return await this.getResponseBody(response);
+            return this.getResponseBody(response);
         }
         throw new RequestError(await this.getResponseBody(response));
     }
@@ -71,7 +72,7 @@ class RequestService {
         try {
             return await response.json();
         } catch (e) {
-            return await clonedResponse.text();
+            return clonedResponse.text();
         }
     }
 
@@ -87,9 +88,11 @@ class RequestService {
     }
 }
 
-export const requestService = new RequestService(
+const requestService = new RequestService(
     String(process.env.VUE_APP_CALENDAR_API_URL),
     {
         'Content-Type': 'application/json',
     },
 );
+
+export default requestService;

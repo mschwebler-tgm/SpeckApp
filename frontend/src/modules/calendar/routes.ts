@@ -3,7 +3,7 @@ import Calendar from '@calendar/views/Calendar.vue';
 import CreateCalendar from '@calendar/views/create/Create.vue';
 import CreateEvent from '@calendar/views/event/create/Create.vue';
 
-export const calendarRoutes: RouteConfig[] = [
+const calendarRoutes: RouteConfig[] = [
     {
         path: 'calendar',
         name: 'app-calendar',
@@ -28,3 +28,5 @@ export const calendarRoutes: RouteConfig[] = [
         ],
     },
 ];
+
+export default calendarRoutes;

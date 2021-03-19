@@ -7,11 +7,11 @@ import { Calendar } from '@domain-models/module/calendar/Calendar';
 import iocBindings from '@shared/ioc/iocBindings';
 import iocContainer from '@shared/ioc/iocContainer';
 import CalendarService from '@calendar/services/CalendarService';
-import { CreateCalendarRequest } from '@calendar/controllers/requests/CreateCalendarRequest';
+import CreateCalendarRequest from '@calendar/controllers/requests/CreateCalendarRequest';
 
 @Tags('Calendar')
 @Route('calendar')
-export default class CalendarController extends Controller {
+export class CalendarController extends Controller {
     @Get('')
     public async list(
         @Request() request: APIGatewayProxyEvent,

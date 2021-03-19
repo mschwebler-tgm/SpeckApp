@@ -1,4 +1,4 @@
-import { calendarRepository } from '@calendar/services/CalendarRepository';
+import calendarRepository from '@calendar/services/CalendarRepository';
 import { ActionTree } from 'vuex';
 import { CalendarStoreState } from '@calendar/store/state';
 

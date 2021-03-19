@@ -1,10 +1,10 @@
 import { RouteConfig } from 'vue-router/types/router';
-import { authRoutes } from '@auth/routes';
-import { calendarRoutes } from '@calendar/routes';
+import authRoutes from '@auth/routes';
+import calendarRoutes from '@calendar/routes';
 import SpeckApp from './views/speck-app/SpeckApp.vue';
 import Home from './views/public-views/Home.vue';
 
-export const routes: RouteConfig[] = [
+const routes: RouteConfig[] = [
     {
         path: '/',
         name: 'home',
@@ -26,3 +26,5 @@ export const routes: RouteConfig[] = [
     },
     ...authRoutes,
 ];
+
+export default routes;

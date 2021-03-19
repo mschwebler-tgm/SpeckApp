@@ -14,11 +14,11 @@ const store = new Vuex.Store({
     modules,
 });
 
-for (const moduleName of Object.keys(modules)) {
+Object.keys(modules).forEach((moduleName) => {
     // @ts-ignore
     if (modules[moduleName].actions.initialize) {
         store.dispatch(`${moduleName}/initialize`);
     }
-}
+});
 
 export default store;

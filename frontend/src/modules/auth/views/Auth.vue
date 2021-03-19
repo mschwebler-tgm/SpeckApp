@@ -8,7 +8,7 @@
 
 <script>
 import { AmplifyEventBus, components } from 'aws-amplify-vue';
-import { rootApp } from '@/main';
+import rootApp from '@/main';
 
 export default {
     name: 'Auth',

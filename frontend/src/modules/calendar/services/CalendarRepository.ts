@@ -1,4 +1,4 @@
-import { requestService } from '@/services/request-service/RequestService';
+import requestService from '@/services/request-service/RequestService';
 import { plainToClass } from 'class-transformer';
 import { Calendar } from '@domain-models/module/calendar/Calendar';
 
@@ -14,4 +14,6 @@ class CalendarRepository {
     }
 }
 
-export const calendarRepository = new CalendarRepository();
+const calendarRepository = new CalendarRepository();
+
+export default calendarRepository;

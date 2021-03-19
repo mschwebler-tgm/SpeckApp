@@ -10,7 +10,7 @@
 
 <script>
 import CalendarForm from '@calendar/components/calendar/CalendarForm';
-import { calendarRepository } from '@calendar/services/CalendarRepository';
+import calendarRepository from '@calendar/services/CalendarRepository';
 import BaseFormOverlay from '@/base-components/base-form-overlay/BaseFormOverlay';
 
 export default {
@@ -32,7 +32,7 @@ export default {
             try {
                 await calendarRepository.create(this.calendar);
                 this.$store.dispatch('calendar/fetchCalendars');
-                return this.$router.push({ name: 'app-calendar' });
+                await this.$router.push({ name: 'app-calendar' });
             } catch (error) {
                 this.errorMessage = error.response.message;
             }

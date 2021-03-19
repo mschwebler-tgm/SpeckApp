@@ -27,7 +27,7 @@ export default class DynamoUserRepository implements IUserRepository {
     async findOrCreateByCognitoId(id: string): Promise<User> {
         const item = await this.findByCognitoId(id);
         if (!item) {
-            return await this.createForCognitoId(id);
+            return this.createForCognitoId(id);
         }
 
         return plainToClass(User, item);

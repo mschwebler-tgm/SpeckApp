@@ -24,6 +24,7 @@ app.use((
     req: ExRequest,
     res: ExResponse,
     next: NextFunction,
+    // eslint-disable-next-line consistent-return
 ): ExResponse | void => {
     console.error(err);
     if (err instanceof ValidateError) {

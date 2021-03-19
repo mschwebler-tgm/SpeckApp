@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars,no-extra-semi,semi */
 import { Calendar } from '@domain-models/module/calendar/Calendar';
 
 export default interface ICalendarRepository {

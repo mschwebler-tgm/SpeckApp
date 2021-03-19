@@ -8,10 +8,20 @@ import iocBindings from '../../shared/ioc/iocBindings';
 import ICalendarRepository from './repositories/ICalendarRepository';
 import DynamoCalendarRepository from './repositories/dynamodb/DynamoCalendarRepository';
 
-export const registerCalendarBindings = (iocContainer: Container) => {
+const registerCalendarBindings = (iocContainer: Container) => {
     iocContainer.bind<CalendarService>(iocBindings.CalendarService).to(CalendarService);
-    iocContainer.bind<ICalendarRepository>(iocBindings.CalendarRepositoryFactory).toFactory<DynamoCalendarRepository>(() => () => new DynamoCalendarRepository(new DynamoDB.DocumentClient(getDynamoOptions()), process.env.CALENDAR_DYNAMO_TABLE_NAME));
-    iocContainer.bind<IUserRepository>(iocBindings.UserRepositoryFactory).toFactory<DynamoUserRepository>(() => () => new DynamoUserRepository(new DynamoDB.DocumentClient(getDynamoOptions()), process.env.CALENDAR_DYNAMO_TABLE_NAME));
+    iocContainer.bind<ICalendarRepository>(iocBindings.CalendarRepositoryFactory).toFactory<DynamoCalendarRepository>(
+        () => () => new DynamoCalendarRepository(
+            new DynamoDB.DocumentClient(getDynamoOptions()),
+            process.env.CALENDAR_DYNAMO_TABLE_NAME,
+        ),
+    );
+    iocContainer.bind<IUserRepository>(iocBindings.UserRepositoryFactory).toFactory<DynamoUserRepository>(
+        () => () => new DynamoUserRepository(
+            new DynamoDB.DocumentClient(getDynamoOptions()),
+            process.env.CALENDAR_DYNAMO_TABLE_NAME,
+        ),
+    );
 };
 
 function getDynamoOptions() {
@@ -26,3 +36,5 @@ function getDynamoOptions() {
     console.log(options);
     return options;
 }
+
+export default registerCalendarBindings;
