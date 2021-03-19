@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import routes from '@/routes';
-import { authGuard, updateUser } from '@auth/authGuard';
+import { authGuard } from '@auth/authGuard';
 
 Vue.use(VueRouter);
 
@@ -12,6 +12,5 @@ const router = new VueRouter({
 });
 
 router.beforeEach(authGuard);
-router.afterEach(updateUser);
 
 export default router;

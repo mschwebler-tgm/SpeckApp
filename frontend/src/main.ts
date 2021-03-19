@@ -24,7 +24,7 @@ const rootApp = new Vue({
         };
     },
     async created() {
-    // @ts-ignore
+        // @ts-ignore
         AmplifyEventBus.$on('authState', (_authState, userInfo) => {
             this.user = userInfo;
         });
