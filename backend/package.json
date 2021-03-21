@@ -12,6 +12,9 @@
     "prepackage": "npm run generate-routes",
     "package": "sls package --aws-profile msc"
   },
+  "pre-commit": [
+    "generate-routes"
+  ],
   "author": "Matthias Schwebler",
   "license": "ISC",
   "devDependencies": {
