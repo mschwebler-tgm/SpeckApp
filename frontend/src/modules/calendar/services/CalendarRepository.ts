@@ -4,13 +4,18 @@ import { Calendar } from '@domain-models/module/calendar/Calendar';
 
 class CalendarRepository {
     async create(calendar: Calendar): Promise<Calendar> {
-        const createdCalendar = requestService.post('/calendar', calendar);
+        const createdCalendar = await requestService.post('/calendar', calendar);
         return plainToClass(Calendar, createdCalendar);
     }
 
     async listCalendars(): Promise<Calendar[]> {
         const calendars: unknown[] = await requestService.get('/calendar');
         return plainToClass(Calendar, calendars);
+    }
+
+    async getById(calendarId: String) {
+        const createdCalendar = await requestService.get(`/calendar/${calendarId}`);
+        return plainToClass(Calendar, createdCalendar);
     }
 }
 

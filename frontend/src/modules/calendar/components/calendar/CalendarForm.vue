@@ -18,19 +18,20 @@
             label="Type"
         />
         <VSpacer/>
-        <VBtn type="submit" color="primary" :loading="loading">
+        <BaseButton type="submit" color="primary" :loading="loading">
             Submit
-        </VBtn>
+        </BaseButton>
     </VForm>
 </template>
 
 <script>
 import BaseTextField from '@/base-components/base-text-field/BaseTextField';
 import BaseSelect from '@/base-components/base-select/BaseSelect';
+import BaseButton from '@/base-components/base-button/BaseButton';
 
 export default {
     name: 'CalendarForm',
-    components: { BaseSelect, BaseTextField },
+    components: { BaseButton, BaseSelect, BaseTextField },
     props: {
         value: {
             type: Object,

@@ -24,7 +24,7 @@ export default {
             }
         },
         activeCalendar(calendar) {
-            this.$store.commit('calendar/setActiveCalendar', calendar);
+            this.$emit('change', calendar);
         },
     },
     computed: {
