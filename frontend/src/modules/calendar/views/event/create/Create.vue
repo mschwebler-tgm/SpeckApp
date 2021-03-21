@@ -29,6 +29,14 @@ export default {
                     enabled: false,
                     interval: 'daily',
                 },
+                notification: {
+                    notifyOnStart: {
+                        enabled: true,
+                    },
+                    notifyOnCreate: {
+                        enabled: false,
+                    },
+                },
             },
         };
     },

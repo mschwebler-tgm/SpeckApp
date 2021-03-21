@@ -45,7 +45,7 @@
 
         <VDivider/>
 
-        <div class="ml-2">
+        <div class="ml-2 mr-2">
             <VCheckbox
                 v-model="event.recurrent.enabled"
                 label="Recurrent event"
@@ -59,6 +59,24 @@
                     item-value="value"
                 />
             </VExpandTransition>
+        </div>
+
+        <VDivider/>
+
+        <div class="ml-2 mr-2">
+            <VCheckbox
+                v-model="event.notification.notifyOnStart.enabled"
+                hide-details
+                label="Notify members on event start"
+                off-icon="mdi-bell"
+                on-icon="mdi-bell-ring"
+            />
+            <VCheckbox
+                v-model="event.notification.notifyOnCreate.enabled"
+                label="Notify members of created event"
+                off-icon="mdi-bell"
+                on-icon="mdi-bell-ring"
+            />
         </div>
 
         <VDivider/>
@@ -106,6 +124,14 @@ export default {
                 recurrent: {
                     enabled: false,
                     interval: 'daily',
+                },
+                notification: {
+                    notifyOnStart: {
+                        enabled: true,
+                    },
+                    notifyOnCreate: {
+                        enabled: false,
+                    },
                 },
             }),
         },

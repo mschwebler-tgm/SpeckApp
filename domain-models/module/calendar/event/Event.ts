@@ -36,8 +36,4 @@ export class EventNotification {
 
 export class EventNotificationConfig {
     enabled: boolean;
-
-    notifyMembers: 'all' | UserIds;
 }
-
-type UserIds = string[];
