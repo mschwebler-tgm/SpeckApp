@@ -2,7 +2,7 @@ import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import { injectable } from 'inversify';
 import uuid4 from '@shared/helpers/uuid4';
 import { plainToClass } from 'class-transformer';
-import { Calendar } from '@domain-models/module/calendar/Calendar';
+import Calendar from '@domain-models/module/calendar/Calendar';
 import ICalendarRepository from '../ICalendarRepository';
 
 @injectable()

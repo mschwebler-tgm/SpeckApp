@@ -1,12 +1,4 @@
-// eslint-disable-next-line no-shadow
-export enum CalendarType {
-    // eslint-disable-next-line no-unused-vars
-    PRIVATE_CALENDAR = 'private',
-    // eslint-disable-next-line no-unused-vars
-    SHARED_CALENDAR = 'shared',
-}
-
-export class Calendar {
+export default class Calendar {
     id?: string;
 
     type: CalendarType;
@@ -14,4 +6,11 @@ export class Calendar {
     name: string;
 
     ownerId?: string;
+}
+
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-shadow
+export enum CalendarType {
+    PRIVATE_CALENDAR = 'private',
+    SHARED_CALENDAR = 'shared',
 }

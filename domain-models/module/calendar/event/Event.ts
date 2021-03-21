@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import AbstractEvent from './AbstractEvent';
 
 export default class Event extends AbstractEvent {
@@ -25,7 +26,15 @@ export class EventDateConfig {
 export class EventRecurrence {
     enabled: boolean;
 
-    interval: 'daily' | 'weekly' | 'monthly' | 'yearly';
+    interval: EventRecurrenceInterval;
+}
+
+// eslint-disable-next-line no-shadow
+export enum EventRecurrenceInterval {
+    DAILY = 'daily',
+    WEEKLY = 'weekly',
+    MONTHLY = 'monthly',
+    YEARLY = 'yearly',
 }
 
 export class EventNotification {
@@ -36,4 +45,8 @@ export class EventNotification {
 
 export class EventNotificationConfig {
     enabled: boolean;
+}
+
+export interface IEvent extends Event {
+
 }

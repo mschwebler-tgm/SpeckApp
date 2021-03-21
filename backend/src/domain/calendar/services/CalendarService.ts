@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import IUserRepository from '@calendar/repositories/IUserRepository';
 import User from '@calendar/domain-models/User';
-import { Calendar } from '@domain-models/module/calendar/Calendar';
+import Calendar from '@domain-models/module/calendar/Calendar';
 import DomainError from '@shared/errors/DomainError';
 import iocBindings from '../../../shared/ioc/iocBindings';
 import ICalendarRepository from '../repositories/ICalendarRepository';
