@@ -47,14 +47,14 @@
 
         <div class="ml-2 mr-2">
             <VCheckbox
-                v-model="event.recurrent.enabled"
+                v-model="event.recurrence.enabled"
                 label="Recurrent event"
             />
             <VExpandTransition>
                 <BaseSelect
-                    v-show="event.recurrent.enabled"
-                    v-model="event.recurrent.interval"
-                    :items="recurrentIntervalItems"
+                    v-show="event.recurrence.enabled"
+                    v-model="event.recurrence.interval"
+                    :items="recurrenceIntervalItems"
                     item-text="label"
                     item-value="value"
                 />
@@ -113,6 +113,7 @@ export default {
             type: Object,
             default: () => ({
                 name: null,
+                allDay: false,
                 startDate: {
                     date: null,
                     time: null,
@@ -121,7 +122,7 @@ export default {
                     date: null,
                     time: null,
                 },
-                recurrent: {
+                recurrence: {
                     enabled: false,
                     interval: 'daily',
                 },
@@ -156,7 +157,7 @@ export default {
                     (v) => !!v || 'Calendar type is required',
                 ],
             },
-            recurrentIntervalItems: [
+            recurrenceIntervalItems: [
                 { value: 'daily', label: 'Every Day' },
                 { value: 'weekly', label: 'Every Week' },
                 { value: 'monthly', label: 'Every Month' },

@@ -12,6 +12,7 @@
     "aws-amplify-vue": "2.1.5",
     "class-transformer": "^0.4.0",
     "core-js": "^3.6.5",
+    "date-fns": "^2.19.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuetify": "^2.4.4",
