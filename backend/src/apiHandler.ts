@@ -4,9 +4,9 @@ import {
     Request as ExRequest,
     NextFunction,
 } from 'express';
-import { ValidateError } from 'tsoa';
 import { RegisterRoutes } from '@calendar/generated-routes/routes';
 import DomainError from '@shared/errors/DomainError';
+import { ValidateError } from '@tsoa/runtime';
 
 const express = require('express');
 const sls = require('serverless-http');
@@ -27,7 +27,6 @@ app.use((
     next: NextFunction,
     // eslint-disable-next-line consistent-return
 ): ExResponse | void => {
-    console.error(err);
     if (err instanceof ValidateError) {
         console.warn(`Caught Validation Error for ${req.path}:`, err.fields);
         return res.status(422).json({
