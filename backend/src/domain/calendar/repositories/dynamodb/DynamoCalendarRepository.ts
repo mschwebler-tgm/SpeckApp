@@ -54,4 +54,11 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
 
         return plainToClass(Calendar, getResult.Item);
     }
+
+    async save(calendar: Calendar): Promise<void> {
+        await this.dynamoClient.put({
+            TableName: this.tableName,
+            Item: calendar,
+        }).promise();
+    }
 }

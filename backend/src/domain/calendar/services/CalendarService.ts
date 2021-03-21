@@ -48,4 +48,8 @@ export default class CalendarService {
         }
         return this.calendarRepository.find(calendarId);
     }
+
+    async save(calendar: Calendar): Promise<void> {
+        await this.calendarRepository.save(calendar);
+    }
 }

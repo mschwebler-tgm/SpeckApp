@@ -1,3 +1,5 @@
+import Event from './event/Event';
+
 export default class Calendar {
     id?: string;
 
@@ -6,6 +8,12 @@ export default class Calendar {
     name: string;
 
     ownerId?: string;
+
+    eventIds: string[] = [];
+
+    addEvent(event: Event) {
+        this.eventIds.push(event.id);
+    }
 }
 
 /* eslint-disable no-unused-vars */
