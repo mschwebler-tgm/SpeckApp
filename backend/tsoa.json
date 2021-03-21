@@ -1,12 +1,31 @@
 {
-  "swagger": {
+  "basePath": "/",
+  "entryFile": "./src/apiHandler.ts",
+  "noImplicitAdditionalProperties": "throw-on-extras",
+  "middleware": "express",
+  "compilerOptions": {
+    "include": [
+      "../domain-models/**/*.ts",
+      "src/**/*"
+    ],
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@domain/*": ["domain/*"],
+      "@calendar/*": ["domain/calendar/*"],
+      "@shared/*": ["shared/*"],
+      "@domain-models/*": ["../../domain-models/*"]
+    }
+  },
+  "controllerPathGlobs": [
+    "./src/**/*Controller.ts"
+  ],
+  "spec": {
     "name": "Speck App Calendar API",
     "description": "Express serverless API definitions",
     "version": "1.0.0",
     "schemes": [ "http" ],
-    "noImplicitAdditionalProperties": "throw-on-extras",
     "outputDirectory": "./src/domain/calendar/generated-routes/swagger",
-    "entryFile": "./src/apiHandler.ts",
     "host": "localhost:3000",
     "controllerPathGlobs": [
       "./src/**/*Controller.ts"
@@ -14,13 +33,6 @@
     "basePath": "/api"
   },
   "routes": {
-    "basePath": "/",
-    "entryFile": "./src/apiHandler.ts",
-    "routesDir": "./src/domain/calendar/generated-routes",
-    "middleware": "express",
-    "noImplicitAdditionalProperties": "throw-on-extras",
-    "controllerPathGlobs": [
-      "./src/**/*Controller.ts"
-    ]
+    "routesDir": "./src/domain/calendar/generated-routes"
   }
 }
