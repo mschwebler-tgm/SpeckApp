@@ -3,5 +3,7 @@ export default abstract class AbstractEvent {
 
     name: string;
 
+    ownerId: string;
+
     type: 'event' | 'reminder' | 'encryptedEvent' | 'reminder_deadline';
 }

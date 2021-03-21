@@ -19,6 +19,7 @@ export class EventController extends Controller {
     ): Promise<Event> {
         const createEventRequest = transformAndValidateSync(CreateEventRequest, body);
         const userId = request.requestContext.authorizer.claims.sub;
+        createEventRequest.ownerId = userId;
         const eventService: EventService = iocContainer.get(iocBindings.EventService);
         return eventService.createEvent(createEventRequest, userId);
     }

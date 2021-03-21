@@ -17,6 +17,8 @@ export default class CreateEventRequest {
     @IsOptional()
     description?: string;
 
+    ownerId: string;
+
     @ValidateNested()
     startDate: EventDateRequest;
 
