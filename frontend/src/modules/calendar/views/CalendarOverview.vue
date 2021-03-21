@@ -54,7 +54,8 @@ export default Vue.extend({
         navigateToCalendar(calendar) {
             this.currentCalendar = calendar;
             const currentRoute = this.$router.currentRoute;
-            if (currentRoute.name === 'calendar' && currentRoute.params.calendarId === calendar.id) {
+            const calendarRouteMatched = currentRoute.matched.some((route) => route.name === 'calendar');
+            if (calendarRouteMatched && currentRoute.params.calendarId === calendar.id) {
                 return;
             }
             this.$router.push({ name: 'calendar', params: { calendarId: calendar.id } });

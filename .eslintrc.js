@@ -47,6 +47,7 @@ module.exports = {
         'prefer-destructuring': 'off',
         'class-methods-use-this': 'off',
         'no-use-before-define': 'off',
+        'max-classes-per-file': 'off',
         'import/prefer-default-export': 'off',
         'import/extensions': 'off',
         'import/no-unresolved': 'off',

@@ -17,10 +17,18 @@ export default {
             isLoading: true,
             event: {
                 name: null,
-                startDate: null,
-                startTime: null,
-                endDate: null,
-                endTime: null,
+                startDate: {
+                    date: null,
+                    time: null,
+                },
+                endDate: {
+                    date: null,
+                    time: null,
+                },
+                recurrent: {
+                    enabled: false,
+                    interval: 'daily',
+                },
             },
         };
     },
