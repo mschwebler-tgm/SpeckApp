@@ -6,6 +6,7 @@ import {
 } from 'express';
 import { ValidateError } from 'tsoa';
 import { RegisterRoutes } from '@calendar/generated-routes/routes';
+import DomainError from '@shared/errors/DomainError';
 
 const express = require('express');
 const sls = require('serverless-http');
@@ -33,6 +34,14 @@ app.use((
             message: 'Validation Failed',
             details: err?.fields,
         });
+    }
+    if (err instanceof DomainError) {
+        const errorBody: {} = {
+            message: 'Error',
+            cause: err.message,
+            name: err.name,
+        };
+        return res.status(err.httpStatus).json(errorBody);
     }
     if (err instanceof Error) {
         const errorBody: {} = {

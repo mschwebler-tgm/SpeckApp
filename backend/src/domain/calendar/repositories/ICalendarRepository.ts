@@ -7,4 +7,5 @@ export default interface ICalendarRepository {
 
     findMultiple(calendarIds: string[]): Promise<Calendar[]>;
 
+    find(calendarId: string): Promise<Calendar>;
 };

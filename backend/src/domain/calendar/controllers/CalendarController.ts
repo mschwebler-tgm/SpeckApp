@@ -1,5 +1,5 @@
 import {
-    Body, Controller, Get, Post, Request, Route, Tags,
+    Body, Controller, Get, Path, Post, Request, Route, Tags,
 } from 'tsoa';
 import { APIGatewayProxyEvent } from 'aws-lambda';
 import { transformAndValidateSync } from 'class-transformer-validator';
@@ -20,6 +20,17 @@ export class CalendarController extends Controller {
         const calendarService: CalendarService = iocContainer.get(iocBindings.CalendarService);
 
         return calendarService.getAllCalendars(userId);
+    }
+
+    @Get('{id}')
+    public async getById(
+        @Path('id') calendarId: string,
+        @Request() request: APIGatewayProxyEvent,
+    ): Promise<Calendar> {
+        const userId = request.requestContext.authorizer.claims.sub;
+        const calendarService: CalendarService = iocContainer.get(iocBindings.CalendarService);
+
+        return calendarService.getById(calendarId, userId);
     }
 
     @Post('')

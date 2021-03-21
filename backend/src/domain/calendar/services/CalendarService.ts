@@ -2,6 +2,7 @@ import { inject, injectable } from 'inversify';
 import IUserRepository from '@calendar/repositories/IUserRepository';
 import User from '@calendar/domain-models/User';
 import { Calendar } from '@domain-models/module/calendar/Calendar';
+import DomainError from '@shared/errors/DomainError';
 import iocBindings from '../../../shared/ioc/iocBindings';
 import ICalendarRepository from '../repositories/ICalendarRepository';
 
@@ -38,5 +39,13 @@ export default class CalendarService {
         const user = await this.userRepository.findOrCreateByCognitoId(userId);
         console.log(user);
         return this.calendarRepository.findMultiple(user.calendarIds);
+    }
+
+    async getById(calendarId: string, userId: string): Promise<Calendar> {
+        const user = await this.userRepository.findOrCreateByCognitoId(userId);
+        if (!user.calendarIds.includes(calendarId)) {
+            throw new DomainError('You don\' have access to this calendar.', 403);
+        }
+        return this.calendarRepository.find(calendarId);
     }
 }

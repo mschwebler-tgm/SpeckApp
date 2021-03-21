@@ -43,4 +43,15 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
 
         return plainToClass(Calendar, batchGetResult.Responses[this.tableName]);
     }
+
+    async find(calendarId: string): Promise<Calendar> {
+        const getResult = await this.dynamoClient.get({
+            TableName: this.tableName,
+            Key: {
+                id: calendarId,
+            },
+        }).promise();
+
+        return plainToClass(Calendar, getResult.Item);
+    }
 }
