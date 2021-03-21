@@ -18,10 +18,17 @@ import {
 export default {
     name: 'Create',
     components: { EventForm, BaseFormOverlay },
+    props: {
+        calendarId: {
+            type: String,
+            required: true,
+        },
+    },
     data() {
         return {
             isLoading: true,
             event: {
+                targetCalendarId: this.calendarId,
                 name: null,
                 allDay: false,
                 startDate: {

@@ -20,6 +20,7 @@ const calendarRoutes: RouteConfig[] = [
                         path: 'event/create',
                         name: 'calendar-event-create',
                         component: CreateEvent,
+                        props: true,
                         meta: {
                             overlayTitle: 'Create Event',
                         },

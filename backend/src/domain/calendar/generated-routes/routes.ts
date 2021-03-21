@@ -131,6 +131,7 @@ const models: TsoaRoute.Models = {
     "CreateEventRequest": {
         "dataType": "refObject",
         "properties": {
+            "targetCalendarId": {"dataType":"string","required":true},
             "name": {"dataType":"string","required":true},
             "description": {"dataType":"string"},
             "startDate": {"ref":"EventDateRequest","required":true},

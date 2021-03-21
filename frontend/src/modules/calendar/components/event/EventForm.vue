@@ -112,6 +112,7 @@ export default {
         value: {
             type: Object,
             default: () => ({
+                targetCalendarId: null,
                 name: null,
                 allDay: false,
                 startDate: {

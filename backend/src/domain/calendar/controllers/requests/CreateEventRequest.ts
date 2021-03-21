@@ -1,5 +1,5 @@
 import {
-    IsBoolean, IsDefined, IsEnum, IsHexColor, IsOptional, Length, ValidateNested,
+    IsBoolean, IsDefined, IsEnum, IsHexColor, IsOptional, IsString, Length, ValidateNested,
 } from 'class-validator';
 import { plainToClass } from 'class-transformer';
 import Event, { EventRecurrenceInterval } from '@domain-models/module/calendar/event/Event';
@@ -8,6 +8,9 @@ import Event, { EventRecurrenceInterval } from '@domain-models/module/calendar/e
  * @tsoaModel
  */
 export default class CreateEventRequest {
+    @IsString()
+    targetCalendarId: string;
+
     @Length(1, 50)
     name: string;
 
