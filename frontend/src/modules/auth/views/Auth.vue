@@ -15,6 +15,12 @@ export default {
     components: {
         ...components,
     },
+    props: {
+        redirectRoute: {
+            type: String,
+            required: false,
+        },
+    },
     data() {
         return {
             authState: this.state,
@@ -49,6 +55,9 @@ export default {
             this.authState = authState;
             if (authState === 'signedIn') {
                 rootApp.setUser(authData);
+                if (this.redirectRoute) {
+                    this.$router.push({ path: this.redirectRoute });
+                }
             }
         };
         AmplifyEventBus.$on('authState', this.unsubscribeAuth);

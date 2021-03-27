@@ -6,6 +6,7 @@ const authRoutes: RouteConfig[] = [
         path: '/auth',
         name: 'auth',
         component: Auth,
+        props: true,
     },
 ];
 

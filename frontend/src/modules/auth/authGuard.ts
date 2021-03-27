@@ -13,7 +13,7 @@ const authGuard: NavigationGuard = async function guard(to, _from, next) {
         next();
     } catch (e) {
         console.log('[NavigationGuard] Error. Redirecting to auth');
-        next({ name: 'auth' });
+        next({ name: 'auth', params: { redirectRoute: to.fullPath } });
     }
 };
 

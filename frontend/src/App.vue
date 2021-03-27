@@ -1,7 +1,7 @@
 <template>
-    <div id="app">
+    <div>
         <VApp>
-            <RouterView v-if="$root.user"/>
+            <RouterView />
         </VApp>
     </div>
 </template>
