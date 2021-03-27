@@ -2,7 +2,8 @@ import Amplify from 'aws-amplify';
 import { NavigationGuard } from 'vue-router/types/router';
 
 const authGuard: NavigationGuard = async function guard(to, _from, next) {
-    if (!to.meta.requiresAuth) {
+    const routeNeedsAuthentication = to.matched.some((route) => route.meta.requiresAuth);
+    if (!routeNeedsAuthentication) {
         next();
         return;
     }

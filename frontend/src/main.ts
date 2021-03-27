@@ -28,7 +28,11 @@ const rootApp = new Vue({
         AmplifyEventBus.$on('authState', (_authState, userInfo) => {
             this.user = userInfo;
         });
-        this.setUser(await Amplify.Auth.currentAuthenticatedUser());
+        try {
+            this.setUser(await Amplify.Auth.currentAuthenticatedUser());
+        } catch (e) {
+            // do nothing
+        }
     },
     methods: {
         setUser(user: User) {

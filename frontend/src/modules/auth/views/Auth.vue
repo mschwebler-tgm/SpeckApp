@@ -9,6 +9,7 @@
 <script>
 import { AmplifyEventBus, components } from 'aws-amplify-vue';
 import rootApp from '@/main';
+import Amplify from 'aws-amplify';
 
 export default {
     name: 'Auth',
@@ -51,10 +52,10 @@ export default {
         };
     },
     created() {
-        this.unsubscribeAuth = async (authState, authData) => {
+        this.unsubscribeAuth = async (authState) => {
             this.authState = authState;
             if (authState === 'signedIn') {
-                rootApp.setUser(authData);
+                rootApp.setUser(await Amplify.Auth.currentAuthenticatedUser());
                 if (this.redirectRoute) {
                     this.$router.push({ path: this.redirectRoute });
                 }

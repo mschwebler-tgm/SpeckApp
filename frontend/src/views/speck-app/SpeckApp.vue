@@ -1,5 +1,5 @@
 <template>
-    <div id="speck-app">
+    <div id="speck-app" v-if="$root.user">
         <AppBar @show-nav="showNavigationDrawer = true"/>
         <NavigationDrawer v-model="showNavigationDrawer"/>
 
