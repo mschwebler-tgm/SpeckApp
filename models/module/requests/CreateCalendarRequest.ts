@@ -4,10 +4,10 @@ import Calendar, { CalendarType } from '@models/module/domain-models/calendar/Ca
 
 export default class CreateCalendarRequest {
     @Length(3, 50)
-    name: string;
+    name: string = '';
 
     @IsEnum(CalendarType)
-    type: CalendarType;
+    type: CalendarType = CalendarType.PRIVATE_CALENDAR;
 
     toDomainModel(): Calendar {
         return plainToClass(Calendar, this);
