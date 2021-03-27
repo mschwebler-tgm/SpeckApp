@@ -43,7 +43,6 @@ function getDynamoOptions() {
         options.accessKeyId = 'xxxxxx';
         options.secretAccessKey = 'xxxxxx';
     }
-    console.log(options);
     return options;
 }
 

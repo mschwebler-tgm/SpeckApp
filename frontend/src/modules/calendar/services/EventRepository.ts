@@ -4,8 +4,13 @@ import Event from '../../../../../models/module/domain-models/calendar/event/Eve
 
 class EventRepository {
     async create(event: Event): Promise<Event> {
-        const createdCalendar = requestService.post('/event', event); // bla
+        const createdCalendar = await requestService.post('/event', event); // bla
         return plainToClass(Event, createdCalendar);
+    }
+
+    async getByCalendarId(calendarId: string): Promise<Event[]> {
+        const events: unknown[] = await requestService.get(`/calendar/${calendarId}/events`);
+        return plainToClass(Event, events);
     }
 }
 

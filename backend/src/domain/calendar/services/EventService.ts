@@ -28,4 +28,10 @@ export default class EventService {
 
         return event;
     }
+
+    // TODO add year parameter for narrowing down event-set size in large calendars
+    async listEvents(calendarId: string, userId: string): Promise<Event[]> {
+        const calendar = await this.calenderService.getById(calendarId, userId);
+        return this.eventRepository.getForCalendar(calendar.id);
+    }
 }

@@ -2,7 +2,8 @@ import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import { injectable } from 'inversify';
 import uuid4 from '@shared/helpers/uuid4';
 import IEventRepository from '@calendar/repositories/IEventRepository';
-import Event from '../../../../../../models/module/domain-models/calendar/event/Event';
+import { plainToClass } from 'class-transformer';
+import Event from '@models/module/domain-models/calendar/event/Event';
 
 @injectable()
 export default class DynamoEventRepository implements IEventRepository {
@@ -25,5 +26,20 @@ export default class DynamoEventRepository implements IEventRepository {
         }).promise();
 
         return event;
+    }
+
+    async getForCalendar(calendarId: string): Promise<Event[]> {
+        const events = await this.dynamoClient.query({
+            TableName: this.tableName,
+            KeyConditionExpression:
+                'targetCalendarId = :calendarId AND startTimestamp BETWEEN :fromTimestamp AND :toTimestamp',
+            ExpressionAttributeValues: {
+                ':calendarId': calendarId,
+                ':fromTimestamp': 0,
+                ':toTimestamp': 999999999999999,
+            },
+        }).promise();
+
+        return plainToClass(Event, events.Items);
     }
 }

@@ -18,7 +18,6 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
 
     async create(calendar: Calendar): Promise<Calendar> {
         calendar.id = `calendar:${uuid4()}`;
-        console.log('creating calendar in dynamo...', JSON.stringify(calendar));
 
         await this.dynamoClient.put({
             TableName: this.tableName,
@@ -32,6 +31,13 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
         if (calendarIds.length === 0) {
             return [];
         }
+        console.log(JSON.stringify({
+            RequestItems: {
+                [this.tableName]: {
+                    Keys: calendarIds.map((id) => ({ id })),
+                },
+            },
+        }));
 
         const batchGetResult = await this.dynamoClient.batchGet({
             RequestItems: {
@@ -44,13 +50,18 @@ export default class DynamoCalendarRepository implements ICalendarRepository {
         return plainToClass(Calendar, batchGetResult.Responses[this.tableName]);
     }
 
-    async find(calendarId: string): Promise<Calendar> {
-        const getResult = await this.dynamoClient.get({
+    async find(calendarId: string, attributesToGet: Array<keyof Calendar> = []): Promise<Calendar> {
+        const getItemInput: DocumentClient.GetItemInput = {
             TableName: this.tableName,
             Key: {
                 id: calendarId,
             },
-        }).promise();
+        };
+        if (attributesToGet.length > 0) {
+            getItemInput.ProjectionExpression = attributesToGet.join(',');
+        }
+
+        const getResult = await this.dynamoClient.get(getItemInput).promise();
 
         return plainToClass(Calendar, getResult.Item);
     }

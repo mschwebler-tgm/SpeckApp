@@ -31,8 +31,8 @@ const models: TsoaRoute.Models = {
     "CreateCalendarRequest": {
         "dataType": "refObject",
         "properties": {
-            "name": {"dataType":"string","required":true},
-            "type": {"ref":"CalendarType","required":true},
+            "name": {"dataType":"string","default":""},
+            "type": {"ref":"CalendarType","default":"private"},
         },
         "additionalProperties": false,
     },
@@ -223,6 +223,29 @@ export function RegisterRoutes(app: express.Router) {
 
 
             const promise = controller.create.apply(controller, validatedArgs as any);
+            promiseHandler(controller, promise, response, undefined, next);
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        app.get('/calendar/:id/events',
+            function CalendarController_events(request: any, response: any, next: any) {
+            const args = {
+                    request: {"in":"request","name":"request","required":true,"dataType":"object"},
+                    calendarId: {"in":"path","name":"id","required":true,"dataType":"string"},
+            };
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = getValidatedArgs(args, request, response);
+            } catch (err) {
+                return next(err);
+            }
+
+            const controller = new CalendarController();
+
+
+            const promise = controller.events.apply(controller, validatedArgs as any);
             promiseHandler(controller, promise, response, undefined, next);
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
