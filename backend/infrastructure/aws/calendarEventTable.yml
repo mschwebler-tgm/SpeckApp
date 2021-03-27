@@ -4,12 +4,12 @@ Resources:
     Properties:
       TableName: ${self:custom.calendarEvent.dynamoTableName}
       AttributeDefinitions:
-        - AttributeName: 'id'
+        - AttributeName: 'targetCalendarId'
           AttributeType: 'S'
         - AttributeName: 'startTimestamp'
           AttributeType: 'N'
       KeySchema:
-        - AttributeName: 'id'
+        - AttributeName: 'targetCalendarId'
           KeyType: 'HASH'
         - AttributeName: 'startTimestamp'
           KeyType: 'RANGE'

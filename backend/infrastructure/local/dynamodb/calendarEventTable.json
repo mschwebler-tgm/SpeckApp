@@ -1,7 +1,7 @@
 {
   "AttributeDefinitions": [
     {
-      "AttributeName": "id",
+      "AttributeName": "targetCalendarId",
       "AttributeType": "S"
     },
     {
@@ -17,7 +17,7 @@
   "KeySchema": [
     {
       "KeyType": "HASH",
-      "AttributeName": "id"
+      "AttributeName": "targetCalendarId"
     },
     {
       "KeyType": "RANGE",
