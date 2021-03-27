@@ -12,16 +12,14 @@
 import CalendarForm from '@calendar/components/calendar/CalendarForm';
 import calendarRepository from '@calendar/services/CalendarRepository';
 import BaseFormOverlay from '@/base-components/base-form-overlay/BaseFormOverlay';
+import CreateCalendarRequest from '@models/module/requests/CreateCalendarRequest';
 
 export default {
     name: 'Create',
     components: { BaseFormOverlay, CalendarForm },
     data() {
         return {
-            calendar: {
-                name: null,
-                type: null,
-            },
+            calendar: new CreateCalendarRequest(),
             isLoading: false,
             errorMessage: null,
         };

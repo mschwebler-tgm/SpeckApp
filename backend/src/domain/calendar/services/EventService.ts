@@ -1,9 +1,9 @@
 import { inject, injectable } from 'inversify';
 import IEventRepository from '@calendar/repositories/IEventRepository';
 import CalendarService from '@calendar/services/CalendarService';
-import CreateEventRequest from '@calendar/controllers/requests/CreateEventRequest';
-import Event from '../../../../../models/module/domain-models/calendar/event/Event';
-import iocBindings from '../../../shared/ioc/iocBindings';
+import CreateEventRequest from '@models/module/requests/CreateEventRequest';
+import Event from '@models/module/domain-models/calendar/event/Event';
+import iocBindings from '@shared/ioc/iocBindings';
 
 @injectable()
 export default class EventService {

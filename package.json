@@ -14,7 +14,9 @@
   "dependencies": {
     "class-validator": "0.13.1",
     "class-transformer": "0.4.0",
-    "class-transformer-validator": "0.9.1"
+    "class-transformer-validator": "0.9.1",
+    "date-fns": "2.19.0",
+    "reflect-metadata": "0.1.13"
   },
   "devDependencies": {
     "@typescript-eslint/parser": "^4.15.2",

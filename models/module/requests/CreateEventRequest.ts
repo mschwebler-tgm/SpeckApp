@@ -1,8 +1,14 @@
+import 'reflect-metadata';
 import {
-    IsBoolean, IsDefined, IsEnum, IsHexColor, IsOptional, IsString, Length, ValidateNested,
+    IsBoolean, IsDefined, IsEnum, IsHexColor, IsOptional, IsString, Length, ValidateIf, ValidateNested,
 } from 'class-validator';
-import { plainToClass } from 'class-transformer';
+import { plainToClass, Type } from 'class-transformer';
 import Event, { EventRecurrenceInterval } from '@models/module/domain-models/calendar/event/Event';
+import {
+    CREATE_EVENT_DEFAULT_END_DATE, CREATE_EVENT_DEFAULT_END_TIME,
+    CREATE_EVENT_DEFAULT_START_DATE,
+    CREATE_EVENT_DEFAULT_START_TIME,
+} from './config';
 
 /**
  * @tsoaModel
@@ -12,31 +18,41 @@ export default class CreateEventRequest {
     targetCalendarId: string;
 
     @Length(1, 50)
-    name: string;
+    name: string = '';
 
     @IsOptional()
-    description?: string;
+    description?: string = '';
 
-    ownerId: string;
+    ownerId: string = '';
 
+    @Type(() => EventDateRequest)
     @ValidateNested()
-    startDate: EventDateRequest;
+    startDate: EventDateRequest = plainToClass(EventDateRequest, {
+        date: CREATE_EVENT_DEFAULT_START_DATE,
+        time: CREATE_EVENT_DEFAULT_START_TIME,
+    });
 
+    @Type(() => EventDateRequest)
     @ValidateNested()
-    endDate: EventDateRequest;
+    endDate: EventDateRequest = plainToClass(EventDateRequest, {
+        date: CREATE_EVENT_DEFAULT_END_DATE,
+        time: CREATE_EVENT_DEFAULT_END_TIME,
+    });
 
     @IsBoolean()
-    allDay: boolean;
+    allDay: boolean = false;
 
+    @Type(() => EventRecurrenceRequest)
     @ValidateNested()
-    recurrence: EventRecurrenceRequest;
+    recurrence: EventRecurrenceRequest = new EventRecurrenceRequest();
 
+    @Type(() => EventNotificationRequest)
     @ValidateNested()
-    notification: EventNotificationRequest;
+    notification: EventNotificationRequest = new EventNotificationRequest();
 
-    @IsOptional()
+    @ValidateIf((request) => Boolean(request.color))
     @IsHexColor()
-    color?: string;
+    color?: string = '';
 
     toDomainModel(): Event {
         return plainToClass(Event, this);
@@ -53,21 +69,21 @@ class EventDateRequest {
 
 class EventRecurrenceRequest {
     @IsBoolean()
-    enabled: boolean;
+    enabled: boolean = false;
 
     @IsEnum(EventRecurrenceInterval)
-    interval: EventRecurrenceInterval;
+    interval: EventRecurrenceInterval = EventRecurrenceInterval.DAILY;
 }
 
 class EventNotificationRequest {
     @ValidateNested()
-    notifyOnCreate: EventNotificationConfigRequest;
+    notifyOnCreate: EventNotificationConfigRequest = new EventNotificationConfigRequest();
 
     @ValidateNested()
-    notifyOnStart: EventNotificationConfigRequest;
+    notifyOnStart: EventNotificationConfigRequest = plainToClass(EventNotificationConfigRequest, { enabled: true });
 }
 
 class EventNotificationConfigRequest {
     @IsBoolean()
-    enabled: boolean;
+    enabled: boolean = false;
 }

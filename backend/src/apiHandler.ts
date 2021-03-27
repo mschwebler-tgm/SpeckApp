@@ -34,6 +34,12 @@ app.use((
             details: err?.fields,
         });
     }
+    if (err instanceof Array) {
+        return res.status(422).json({
+            message: 'Validation Failed',
+            details: err.toString(),
+        });
+    }
     if (err instanceof DomainError) {
         const errorBody: {} = {
             message: 'Error',

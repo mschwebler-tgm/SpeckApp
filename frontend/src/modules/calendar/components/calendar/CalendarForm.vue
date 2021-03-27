@@ -28,13 +28,14 @@
 import BaseTextField from '@/base-components/base-text-field/BaseTextField';
 import BaseSelect from '@/base-components/base-select/BaseSelect';
 import BaseButton from '@/base-components/base-button/BaseButton';
+import CreateCalendarRequest from '@models/module/requests/CreateCalendarRequest';
 
 export default {
     name: 'CalendarForm',
     components: { BaseButton, BaseSelect, BaseTextField },
     props: {
         value: {
-            type: Object,
+            type: CreateCalendarRequest,
             default: () => ({
                 name: null,
                 type: null,

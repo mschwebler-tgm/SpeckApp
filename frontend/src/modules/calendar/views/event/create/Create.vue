@@ -8,12 +8,8 @@
 import BaseFormOverlay from '@/base-components/base-form-overlay/BaseFormOverlay';
 import EventForm from '@calendar/components/event/EventForm';
 import eventRepository from '@calendar/services/EventRepository';
-import {
-    DEFAULT_END_DATE,
-    DEFAULT_END_TIME,
-    DEFAULT_START_DATE,
-    DEFAULT_START_TIME,
-} from '@calendar/views/event/create/config';
+import { plainToClass } from 'class-transformer';
+import CreateEventRequest from '@models/module/requests/CreateEventRequest';
 
 export default {
     name: 'Create',
@@ -27,31 +23,7 @@ export default {
     data() {
         return {
             isLoading: true,
-            event: {
-                targetCalendarId: this.calendarId,
-                name: null,
-                allDay: false,
-                startDate: {
-                    date: DEFAULT_START_DATE,
-                    time: DEFAULT_START_TIME,
-                },
-                endDate: {
-                    date: DEFAULT_END_DATE,
-                    time: DEFAULT_END_TIME,
-                },
-                recurrence: {
-                    enabled: false,
-                    interval: 'daily',
-                },
-                notification: {
-                    notifyOnStart: {
-                        enabled: true,
-                    },
-                    notifyOnCreate: {
-                        enabled: false,
-                    },
-                },
-            },
+            event: plainToClass(CreateEventRequest, { targetCalendarId: this.calendarId }),
         };
     },
     methods: {

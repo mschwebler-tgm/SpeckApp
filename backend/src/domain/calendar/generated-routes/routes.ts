@@ -108,8 +108,8 @@ const models: TsoaRoute.Models = {
     "EventRecurrenceRequest": {
         "dataType": "refObject",
         "properties": {
-            "enabled": {"dataType":"boolean","required":true},
-            "interval": {"ref":"EventRecurrenceInterval","required":true},
+            "enabled": {"dataType":"boolean","default":false},
+            "interval": {"ref":"EventRecurrenceInterval","default":"daily"},
         },
         "additionalProperties": false,
     },
@@ -117,7 +117,7 @@ const models: TsoaRoute.Models = {
     "EventNotificationConfigRequest": {
         "dataType": "refObject",
         "properties": {
-            "enabled": {"dataType":"boolean","required":true},
+            "enabled": {"dataType":"boolean","default":false},
         },
         "additionalProperties": false,
     },
@@ -125,8 +125,8 @@ const models: TsoaRoute.Models = {
     "EventNotificationRequest": {
         "dataType": "refObject",
         "properties": {
-            "notifyOnCreate": {"ref":"EventNotificationConfigRequest","required":true},
-            "notifyOnStart": {"ref":"EventNotificationConfigRequest","required":true},
+            "notifyOnCreate": {"ref":"EventNotificationConfigRequest"},
+            "notifyOnStart": {"ref":"EventNotificationConfigRequest"},
         },
         "additionalProperties": false,
     },
@@ -135,15 +135,15 @@ const models: TsoaRoute.Models = {
         "dataType": "refObject",
         "properties": {
             "targetCalendarId": {"dataType":"string","required":true},
-            "name": {"dataType":"string","required":true},
-            "description": {"dataType":"string"},
-            "ownerId": {"dataType":"string","required":true},
-            "startDate": {"ref":"EventDateRequest","required":true},
-            "endDate": {"ref":"EventDateRequest","required":true},
-            "allDay": {"dataType":"boolean","required":true},
-            "recurrence": {"ref":"EventRecurrenceRequest","required":true},
-            "notification": {"ref":"EventNotificationRequest","required":true},
-            "color": {"dataType":"string"},
+            "name": {"dataType":"string","default":""},
+            "description": {"dataType":"string","default":""},
+            "ownerId": {"dataType":"string","default":""},
+            "startDate": {"ref":"EventDateRequest"},
+            "endDate": {"ref":"EventDateRequest"},
+            "allDay": {"dataType":"boolean","default":false},
+            "recurrence": {"ref":"EventRecurrenceRequest"},
+            "notification": {"ref":"EventNotificationRequest"},
+            "color": {"dataType":"string","default":""},
         },
         "additionalProperties": false,
     },

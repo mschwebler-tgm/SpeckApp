@@ -1,9 +1,10 @@
 import requestService from '@/services/request-service/RequestService';
 import { plainToClass } from 'class-transformer';
 import Calendar from '@models/module/domain-models/calendar/Calendar';
+import CreateCalendarRequest from '@models/module/requests/CreateCalendarRequest';
 
 class CalendarRepository {
-    async create(calendar: Calendar): Promise<Calendar> {
+    async create(calendar: CreateCalendarRequest): Promise<Calendar> {
         const createdCalendar = await requestService.post('/calendar', calendar);
         return plainToClass(Calendar, createdCalendar);
     }
