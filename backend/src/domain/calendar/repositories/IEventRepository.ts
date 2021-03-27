@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars,no-extra-semi,semi */
-import Event from '@domain-models/module/calendar/event/Event';
+import Event from '../../../../../models/module/domain-models/calendar/event/Event';
 
 export default interface IEventRepository {
 

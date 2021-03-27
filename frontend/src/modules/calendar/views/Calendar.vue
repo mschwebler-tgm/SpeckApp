@@ -8,8 +8,8 @@
 
 <script>
 import CalendarActions from '@calendar/components/calendar/CalendarActions';
-import Calendar from '@domain-models/module/calendar/Calendar';
 import calendarRepository from '@calendar/services/CalendarRepository';
+import Calendar from '@models/module/domain-models/calendar/Calendar';
 
 export default {
     name: 'Calendar',

@@ -11,7 +11,7 @@ module.exports = {
                 '@': path.join(__dirname, 'src/'),
                 '@auth': path.join(__dirname, 'src/modules/auth/'),
                 '@calendar': path.join(__dirname, 'src/modules/calendar/'),
-                '@domain-models': path.join(__dirname, '../domain-models/'),
+                '@models': path.join(__dirname, '../models/'),
             },
         },
     },

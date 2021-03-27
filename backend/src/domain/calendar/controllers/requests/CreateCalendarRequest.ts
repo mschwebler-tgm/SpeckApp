@@ -1,6 +1,6 @@
 import { IsEnum, Length } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import Calendar, { CalendarType } from '@domain-models/module/calendar/Calendar';
+import Calendar, { CalendarType } from '@models/module/domain-models/calendar/Calendar';
 
 export default class CreateCalendarRequest {
     @Length(3, 50)

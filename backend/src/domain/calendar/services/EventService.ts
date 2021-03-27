@@ -1,8 +1,8 @@
 import { inject, injectable } from 'inversify';
 import IEventRepository from '@calendar/repositories/IEventRepository';
-import Event from '@domain-models/module/calendar/event/Event';
 import CalendarService from '@calendar/services/CalendarService';
 import CreateEventRequest from '@calendar/controllers/requests/CreateEventRequest';
+import Event from '../../../../../models/module/domain-models/calendar/event/Event';
 import iocBindings from '../../../shared/ioc/iocBindings';
 
 @injectable()

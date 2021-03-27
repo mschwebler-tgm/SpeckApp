@@ -2,7 +2,7 @@ import {
     IsBoolean, IsDefined, IsEnum, IsHexColor, IsOptional, IsString, Length, ValidateNested,
 } from 'class-validator';
 import { plainToClass } from 'class-transformer';
-import Event, { EventRecurrenceInterval } from '@domain-models/module/calendar/event/Event';
+import Event, { EventRecurrenceInterval } from '../../../../../../models/module/domain-models/calendar/event/Event';
 
 /**
  * @tsoaModel

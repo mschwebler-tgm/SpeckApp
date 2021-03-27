@@ -1,6 +1,6 @@
 import requestService from '@/services/request-service/RequestService';
 import { plainToClass } from 'class-transformer';
-import Event from '@domain-models/module/calendar/event/Event';
+import Event from '../../../../../models/module/domain-models/calendar/event/Event';
 
 class EventRepository {
     async create(event: Event): Promise<Event> {

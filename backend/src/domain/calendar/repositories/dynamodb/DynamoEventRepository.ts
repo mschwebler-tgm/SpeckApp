@@ -2,7 +2,7 @@ import { DocumentClient } from 'aws-sdk/lib/dynamodb/document_client';
 import { injectable } from 'inversify';
 import uuid4 from '@shared/helpers/uuid4';
 import IEventRepository from '@calendar/repositories/IEventRepository';
-import Event from '@domain-models/module/calendar/event/Event';
+import Event from '../../../../../../models/module/domain-models/calendar/event/Event';
 
 @injectable()
 export default class DynamoEventRepository implements IEventRepository {

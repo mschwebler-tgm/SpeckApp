@@ -26,8 +26,8 @@
       "@calendar/*": [
         "src/modules/calendar/*"
       ],
-      "@domain-models/*": [
-        "../domain-models/*"
+      "@models/*": [
+        "../models/*"
       ],
     },
     "lib": [
@@ -43,7 +43,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "../domain-models/**/*.ts"
+    "../models/module/**/*.ts"
   ],
   "exclude": [
     "node_modules"
