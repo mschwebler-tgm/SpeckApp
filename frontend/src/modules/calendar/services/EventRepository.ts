@@ -4,7 +4,7 @@ import Event from '@domain-models/module/calendar/event/Event';
 
 class EventRepository {
     async create(event: Event): Promise<Event> {
-        const createdCalendar = requestService.post('/event', event);
+        const createdCalendar = requestService.post('/event', event); // bla
         return plainToClass(Event, createdCalendar);
     }
 }

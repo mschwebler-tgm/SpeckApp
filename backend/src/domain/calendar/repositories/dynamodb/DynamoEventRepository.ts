@@ -17,6 +17,7 @@ export default class DynamoEventRepository implements IEventRepository {
 
     async create(event: Event): Promise<Event> {
         event.id = `event:${uuid4()}`;
+        event.startTimestamp = new Date(Date.parse(`${event.startDate.date} ${event.startDate.time}`)).valueOf();
 
         await this.dynamoClient.put({
             TableName: this.tableName,
