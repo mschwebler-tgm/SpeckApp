@@ -29,6 +29,7 @@ provider:
   environment:
     REGION: ${self:provider.region}
     CALENDAR_DYNAMO_TABLE_NAME: ${self:custom.calendar.dynamoTableName}
+    EVENT_DYNAMO_TABLE_NAME: ${self:custom.calendarEvent.dynamoTableName}
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -46,6 +47,8 @@ custom:
     before:deploy:deploy: zip -ur .serverless/speck-app-backend.zip package.json  # package.json is needed by tsoa
   calendar:
     dynamoTableName: ${self:custom.stackName}-calendar-ddb
+  calendarEvent:
+    dynamoTableName: ${self:custom.stackName}-calendar-event-ddb
 
 functions:
   calendarApi:

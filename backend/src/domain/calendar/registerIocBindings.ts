@@ -29,7 +29,7 @@ const registerCalendarBindings = (iocContainer: Container) => {
     iocContainer.bind<IEventRepository>(iocBindings.EventRepositoryFactory).toFactory<DynamoEventRepository>(
         () => () => new DynamoEventRepository(
             new DynamoDB.DocumentClient(getDynamoOptions()),
-            process.env.CALENDAR_DYNAMO_TABLE_NAME,
+            process.env.EVENT_DYNAMO_TABLE_NAME,
         ),
     );
 };

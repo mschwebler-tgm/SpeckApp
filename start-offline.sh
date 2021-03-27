@@ -22,6 +22,7 @@ echo "[start-offline] starting dynamodb docker image... Port: 8000"
 docker run -d --rm --name $dockerContainerName -p 8000:8000 amazon/dynamodb-local -jar DynamoDBLocal.jar -sharedDb
 echo "[start-offline] seeding calendar table..."
 echo $(aws --profile=msc dynamodb create-table --cli-input-json file://backend/infrastructure/local/dynamodb/calendarTable.json --endpoint-url http://localhost:8000 --region eu-central-1 --output text)
+echo $(aws --profile=msc dynamodb create-table --cli-input-json file://backend/infrastructure/local/dynamodb/calendarEventTable.json --endpoint-url http://localhost:8000 --region eu-central-1 --output text)
 
 # local dynamo web ui
 echo "[start-offline] starting dynamodb web ui... http://localhost:8001"

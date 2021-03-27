@@ -1,0 +1,27 @@
+{
+  "AttributeDefinitions": [
+    {
+      "AttributeName": "id",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "startTimestamp",
+      "AttributeType": "N"
+    }
+  ],
+  "ProvisionedThroughput": {
+    "WriteCapacityUnits": 5,
+    "ReadCapacityUnits": 5
+  },
+  "TableName": "speck-app-backend-dev-calendar-event-ddb",
+  "KeySchema": [
+    {
+      "KeyType": "HASH",
+      "AttributeName": "id"
+    },
+    {
+      "KeyType": "RANGE",
+      "AttributeName": "startTimestamp"
+    }
+  ]
+}
