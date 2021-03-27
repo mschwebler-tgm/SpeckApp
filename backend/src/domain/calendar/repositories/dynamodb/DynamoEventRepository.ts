@@ -28,15 +28,15 @@ export default class DynamoEventRepository implements IEventRepository {
         return event;
     }
 
-    async getForCalendar(calendarId: string): Promise<Event[]> {
+    async getForCalendar(calendarId: string, fromTimestamp: number, toTimestamp: number): Promise<Event[]> {
         const events = await this.dynamoClient.query({
             TableName: this.tableName,
             KeyConditionExpression:
                 'targetCalendarId = :calendarId AND startTimestamp BETWEEN :fromTimestamp AND :toTimestamp',
             ExpressionAttributeValues: {
                 ':calendarId': calendarId,
-                ':fromTimestamp': 0,
-                ':toTimestamp': 999999999999999,
+                ':fromTimestamp': fromTimestamp,
+                ':toTimestamp': toTimestamp,
             },
         }).promise();
 

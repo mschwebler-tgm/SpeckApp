@@ -10,6 +10,8 @@ import Calendar from '@models/module/domain-models/calendar/Calendar';
 import CreateCalendarRequest from '@models/module/requests/CreateCalendarRequest';
 import EventService from '@calendar/services/EventService';
 import Event from '@models/module/domain-models/calendar/event/Event';
+import { plainToClass } from 'class-transformer';
+import ListEventsRequest from '@models/module/requests/ListEventsRequest';
 
 @Tags('Calendar')
 @Route('calendar')
@@ -52,8 +54,9 @@ export class CalendarController extends Controller {
         @Path('id') calendarId: string,
     ): Promise<Event[]> {
         const userId = request.requestContext.authorizer.claims.sub;
+        const listEventsRequest = plainToClass(ListEventsRequest, { calendarId, userId });
         const eventService: EventService = iocContainer.get(iocBindings.EventService);
 
-        return eventService.listEvents(calendarId, userId);
+        return eventService.listEvents(listEventsRequest);
     }
 }

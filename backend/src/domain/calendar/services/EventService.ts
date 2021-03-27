@@ -4,6 +4,7 @@ import CalendarService from '@calendar/services/CalendarService';
 import CreateEventRequest from '@models/module/requests/CreateEventRequest';
 import Event from '@models/module/domain-models/calendar/event/Event';
 import iocBindings from '@shared/ioc/iocBindings';
+import ListEventsRequest from '@models/module/requests/ListEventsRequest';
 
 @injectable()
 export default class EventService {
@@ -29,9 +30,12 @@ export default class EventService {
         return event;
     }
 
-    // TODO add year parameter for narrowing down event-set size in large calendars
-    async listEvents(calendarId: string, userId: string): Promise<Event[]> {
-        const calendar = await this.calenderService.getById(calendarId, userId);
-        return this.eventRepository.getForCalendar(calendar.id);
+    async listEvents(listEventsRequest: ListEventsRequest): Promise<Event[]> {
+        const calendar = await this.calenderService.getById(listEventsRequest.calendarId, listEventsRequest.userId);
+        return this.eventRepository.getForCalendar(
+            calendar.id,
+            listEventsRequest.getFromTimestamp(),
+            listEventsRequest.getToTimestamp(),
+        );
     }
 }

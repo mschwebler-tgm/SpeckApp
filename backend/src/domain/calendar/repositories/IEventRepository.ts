@@ -5,5 +5,5 @@ export default interface IEventRepository {
 
     create(event: Event): Promise<Event>;
 
-    getForCalendar(calendarId: string): Promise<Event[]>;
+    getForCalendar(calendarId: string, fromTimestamp: number, toTimestamp: number): Promise<Event[]>;
 };
