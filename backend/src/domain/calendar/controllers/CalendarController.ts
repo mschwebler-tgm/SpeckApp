@@ -6,8 +6,8 @@ import { transformAndValidateSync } from 'class-transformer-validator';
 import iocBindings from '@shared/ioc/iocBindings';
 import iocContainer from '@shared/ioc/iocContainer';
 import CalendarService from '@calendar/services/CalendarService';
-import CreateCalendarRequest from '@calendar/controllers/requests/CreateCalendarRequest';
 import Calendar from '@models/module/domain-models/calendar/Calendar';
+import CreateCalendarRequest from '@models/module/requests/CreateCalendarRequest';
 
 @Tags('Calendar')
 @Route('calendar')

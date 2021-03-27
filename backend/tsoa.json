@@ -5,7 +5,7 @@
   "middleware": "express",
   "compilerOptions": {
     "include": [
-      "../domain-models/**/*.ts",
+      "../models/**/*.ts",
       "src/**/*"
     ],
     "baseUrl": "./src",
@@ -14,7 +14,7 @@
       "@domain/*": ["domain/*"],
       "@calendar/*": ["domain/calendar/*"],
       "@shared/*": ["shared/*"],
-      "@domain-models/*": ["../../domain-models/*"]
+      "@models/*": ["../../models/*"]
     }
   },
   "controllerPathGlobs": [

@@ -2,12 +2,12 @@ import {
     Body, Controller, Post, Request, Route, Tags,
 } from 'tsoa';
 import { APIGatewayProxyEvent } from 'aws-lambda';
-import CreateEventRequest from '@calendar/controllers/requests/CreateEventRequest';
 import { transformAndValidateSync } from 'class-transformer-validator';
 import iocContainer from '@shared/ioc/iocContainer';
 import iocBindings from '@shared/ioc/iocBindings';
 import EventService from '@calendar/services/EventService';
-import Event from '../../../../../models/module/domain-models/calendar/event/Event';
+import Event from '@models/module/domain-models/calendar/event/Event';
+import CreateEventRequest from '@models/module/requests/CreateEventRequest';
 
 @Tags('Event')
 @Route('event')

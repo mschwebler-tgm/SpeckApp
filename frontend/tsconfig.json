@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "target": "esnext",
     "module": "esnext",
     "strict": true,
@@ -28,7 +29,7 @@
       ],
       "@models/*": [
         "../models/*"
-      ],
+      ]
     },
     "lib": [
       "esnext",
@@ -43,7 +44,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "../models/module/**/*.ts"
+    "../models/**/*.ts"
   ],
   "exclude": [
     "node_modules"
